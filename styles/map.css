@@ -5,6 +5,7 @@ body{
   width: 56%;
   position: relative;
 }
+/*Choix du monde à explorer*/
 #item1 {
     position:absolute;
     width: 32px;
@@ -44,10 +45,14 @@ body{
   color:#1e7fcb;
   position: absolute;
   top: 60%;
-  left: 69%;
+  left: 70%;
   font-size: 20px;
   font-family: 'Josefin Slab', serif;
 }
+#mapChoice {
+
+}
+/*Choix du personnage*/
 h1 {
   color: #1e7fcb;
   font-family: 'Josefin Slab', serif;
@@ -61,6 +66,7 @@ img{
 a {
   text-decoration: none;
 }
+/*Retour à la page d'accueil*/
 button {
   border: 1px solid #1E7FCB;
   background: none;
