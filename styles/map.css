@@ -2,7 +2,7 @@ body{
   background: #000000;
 }
 #map {
-  width: 58%;
+  width: 56%;
   position: relative;
 }
 #item1 {
@@ -40,6 +40,13 @@ body{
     left:40%;
     z-index: 5;
 }
+#player {
+  color:#1e7fcb;
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  font-family: 'Josefin Slab', serif;
+}
 h1 {
   color: #1e7fcb;
   font-family: 'Josefin Slab', serif;
@@ -48,7 +55,7 @@ h1 {
 img{
   float: left;
   width: 300px;
-  margin: 5px;
+  padding: 5px;
 }
 a {
   text-decoration: none;
