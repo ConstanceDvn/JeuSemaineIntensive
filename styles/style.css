@@ -8,25 +8,12 @@ body {
   background-color: #000000;
 
 }
+/*Nom du jeu*/
 #title {
   width: 60%;
   display: block;
   margin: auto;
   padding: 40px;
-}
-
-button {
-  border: 1px solid #1E7FCB;
-  background: none;
-  color: #1E7FCB;
-  width: 15%;
-  height: 20%;
-  padding: 15px;
-  font-size: 20px;
-  display: block;
-  margin: auto;
-  margin-top: 8%;
-  font-family: 'Press Start 2P', cursive;
 }
 #description {
   font-family: 'Josefin Slab', serif;
@@ -37,8 +24,48 @@ button {
   color: #FAFAFA;
   width: 50%;
   padding: 15px;
-  line-height: 20px;
+  line-height: 21px;
 }
+/*Règles du jeu*/
+.rules {
+  font-family: 'Josefin Slab', serif;
+  color: #FAFAFA;
+  display: block;
+  margin: auto;
+  text-align: center;
+  margin-top: 6%;
+  font-size: 16px;
+  text-decoration: underline;
+}
+#explanations {
+  font-family: 'Josefin Slab', serif;
+  color: #FAFAFA;
+  display: block;
+  margin: auto;
+  text-align: center;
+  margin-top: 1%;
+  font-size: 15px;
+  width: 40%;
+  display: none;
+}
+div.current #explanations {
+  display: block;
+}
+/*Bouton jouer*/
+button {
+  border: 1px solid #1E7FCB;
+  background: none;
+  color: #1E7FCB;
+  width: 15%;
+  height: 20%;
+  padding: 15px;
+  font-size: 20px;
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+  font-family: 'Press Start 2P', cursive;
+}
+
 #copyright {
   font-family: 'Josefin Slab', serif;
   color: #FAFAFA;
