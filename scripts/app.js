@@ -1,10 +1,6 @@
-let explanations = document.querySelector('#showRules');
+let rules = document.querySelector('#showRules')
+let explanations = document.querySelector('#explanations')
 
-explanations.addEventListener('click', function() {
-  if(this.parentNode.classList.contains('current')) {
-    this.parentNode.classList.remove('current')
-  }
-  else {
-    this.parentNode.classList.add('current')
-    }
+rules.addEventListener('click', function() {
+  explanations.classList.toggle('current');
 })
