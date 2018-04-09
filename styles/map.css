@@ -42,9 +42,10 @@ body{
 }
 #player {
   color:#1e7fcb;
-  margin: auto;
-  text-align: center;
-  width: 50%;
+  position: absolute;
+  top: 60%;
+  left: 69%;
+  font-size: 20px;
   font-family: 'Josefin Slab', serif;
 }
 h1 {
