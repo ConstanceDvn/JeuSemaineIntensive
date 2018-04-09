@@ -57,6 +57,9 @@ body {
   height: 100px !important;
 }
 /*Bouton jouer*/
+a {
+  text-decoration: none;
+}
 button {
   border: 1px solid #1E7FCB;
   background: none;

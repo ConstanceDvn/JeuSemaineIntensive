@@ -1,0 +1,65 @@
+body{
+  background: #000000;
+}
+#map {
+  width: 58%;
+  position: relative;
+}
+#item1 {
+    position:absolute;
+    width: 32px;
+    top:35%;
+    left: 18%;
+    z-index: 5;
+}
+#item2 {
+    position:absolute;
+    width: 32px;
+    top:55%;
+    left:20%;
+    z-index: 5;
+}
+#item3 {
+    position:absolute;
+    width: 32px;
+    top:30%;
+    left:48%;
+    z-index: 5;
+}
+#item4 {
+    position:absolute;
+    width: 32px;
+    top:10%;
+    left:15%;
+    z-index: 5;
+}
+#item5 {
+    position:absolute;
+    width: 32px;
+    top:40%;
+    left:40%;
+    z-index: 5;
+}
+h1 {
+  color: #1e7fcb;
+  font-family: 'Josefin Slab', serif;
+  text-align: center;
+}
+img{
+  float: left;
+  width: 300px;
+  margin: 5px;
+}
+a {
+  text-decoration: none;
+}
+button {
+  border: 1px solid #1E7FCB;
+  background: none;
+  color: #1E7FCB;
+  padding: 10px;
+  font-size: 10px;
+  font-family: 'Press Start 2P', cursive;
+  margin-top: 250px;
+  margin-left: 300px;
+}
