@@ -1,4 +1,4 @@
-let perso, persoX, persoY, dir = 2, door, n = 0, village
+let perso, persoX, persoY, dir = 2, n = 0, village
 door = document.querySelector(".door")
 village = document.querySelector("#village")
 let obstacles = [
@@ -18,6 +18,7 @@ let obstacles = [
     {ymin:480,ymax:520,xmin:520,xmax:650},
     {ymin:0,ymax:0,xmin:0,xmax:0},
 ]
+let
 init()
 console.log('ok')
 function init(){
