@@ -49,8 +49,27 @@ body{
   font-size: 20px;
   font-family: 'Josefin Slab', serif;
 }
-#mapChoice {
-
+.mapExplain {
+  font-family: 'Josefin Slab', serif;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 10px;
+  color: #000000;
+  position: absolute;
+  background: no-repeat center/105% url(../images/papyrus.png);
+  text-align: center;
+  width: 10%;
+  top: 35%;
+  left: 22%;
+  display: none;
+}
+.mapExplain a {
+  font-family: 'Josefin Slab', serif;
+  font-size: 13px;
+  color: #1e7fcb;
+}
+.current {
+  display: block;
 }
 /*Choix du personnage*/
 h1 {
