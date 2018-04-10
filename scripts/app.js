@@ -1,4 +1,4 @@
-/*règles du jeu*/
+//règles du jeu
 let rules = document.querySelector('#showRules')
 let explanations = document.querySelector('#explanations')
 
