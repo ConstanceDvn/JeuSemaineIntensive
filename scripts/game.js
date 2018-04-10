@@ -18,7 +18,9 @@ let obstacles = [
     {ymin:480,ymax:520,xmin:520,xmax:650},
     {ymin:0,ymax:0,xmin:0,xmax:0},
 ]
-let
+let doors = [
+    {}
+]
 init()
 console.log('ok')
 function init(){
