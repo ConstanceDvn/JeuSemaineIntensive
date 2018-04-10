@@ -1,12 +1,18 @@
+#village{
+    z-index: -1;
+    position: absolute;
+    top:0px;
+    left:0px;
+}
 #charac{
     position:absolute;
-    height:64px;
-    width:64px;
+    height:40px;
+    width:40px;
 }
 .door{
     position: absolute;
-    top:384px;
-    left:384px;
-    height:64px;
-    width:64px;
+    top:370px;
+    left:248px;
+    height:40px;
+    width:40px;
 }
