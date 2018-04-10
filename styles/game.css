@@ -1,3 +1,12 @@
 #charac{
     position:absolute;
+    height:64px;
+    width:64px;
+}
+.door{
+    position: absolute;
+    top:384px;
+    left:384px;
+    height:64px;
+    width:64px;
 }
