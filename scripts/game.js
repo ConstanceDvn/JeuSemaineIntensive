@@ -1,80 +1,132 @@
-let perso, persoX, persoY, dir, door
+let perso, persoX, persoY, dir = 2, n = 0, village
 door = document.querySelector(".door")
+village = document.querySelector("#village")
+let obstacles = [
+    {ymin:60,ymax:170,xmin:10,xmax:140},
+    {ymin:30,ymax:140,xmin:170,xmax:330},
+    {ymin:-10,ymax:140,xmin:390,xmax:590},
+    {ymin:30,ymax:140,xmin:840,xmax:1000},
+    {ymin:250,ymax:360,xmin:300,xmax:460},
+    {ymin:250,ymax:390,xmin:490,xmax:680},
+    {ymin:350,ymax:490,xmin:-10,xmax:110},
+    {ymin:480,ymax:710,xmin:130,xmax:260},
+    {ymin:510,ymax:680,xmin:140,xmax:780},
+    {ymin:480,ymax:710,xmin:650,xmax:780},
+    {ymin:480,ymax:710,xmin:840,xmax:970},
+    {ymin:480,ymax:520,xmin:260,xmax:390},
+    {ymin:480,ymax:520,xmin:390,xmax:520},
+    {ymin:480,ymax:520,xmin:520,xmax:650},
+    {ymin:0,ymax:0,xmin:0,xmax:0},
+]
+let
 init()
 console.log('ok')
 function init(){
+    // Création du personnage et placement du personnage
     perso = document.createElement("img")
-    let srcImgPerso = "sprites/perso0.png"
+    let srcImgPerso = "sprites/face_sprite0.png"
     perso.setAttribute('src', srcImgPerso)
     perso.setAttribute('id', 'charac')
-    persoX = 0
-    persoY = 0
+    persoX = 250
+    persoY = 390
     document.querySelector('body').appendChild(perso)
     placePerso()
 }
-
+// Déplacement du personnage
 window.addEventListener('keydown', (e) => {
-    console.log(e.keyCode)
     switch (e.keyCode) {
+        // Vers le haut
         case 90 :
-            persoY -= 64
+            dir = 0
+            persoY -= 10
             console.log(persoY)
+            srcImgPerso = "sprites/back_sprite" + n + ".png"
             if (persoY < 0 || persoY > window.innerHeight) {
-                persoY += 64
+                persoY += 10
             }
             else{
-                placePerso()
             }
-            srcImgPerso = "sprites/perso2.png"
             break;
+            // À droite
         case 68 :
-            persoX += 64
+            dir = 1
+            persoX += 10
             console.log(persoX)
-            if (persoX < 0 || persoX > window.innerWidth-1) {
-                persoX -= 64
+            srcImgPerso = "sprites/right_sprite" + n + ".png"
+            if (persoX < 0 || persoX > window.innerWidth - 1) {
+                persoX -= 10
             }
             else{
-                placePerso()
             }
-            srcImgPerso = "sprites/perso3.png"
             break;
+            // Vers le bas
         case 83 :
-            persoY += 64
+            dir = 2
+            persoY += 10
             console.log(persoY)
+            srcImgPerso = "sprites/face_sprite" + n + ".png"
             if (persoY < 0 || persoY > window.innerHeight) {
-                persoY -= 64
+                persoY -= 10
             }
             else{
-                placePerso()
             }
-            srcImgPerso = "sprites/perso0.png"
-            perso.setAttribute('src', srcImgPerso)
             break;
+            // À gauche
         case 81 :
-            persoX -= 64
+            dir = 3
+            persoX -= 10
             console.log(persoX)
-            if (persoX < 0 || persoX > window.innerWidth-1) {
-                persoX += 64
+            srcImgPerso = "sprites/left_sprite" + n + ".png"
+            if (persoX < 0 || persoX > window.innerWidth - 1) {
+                persoX += 10
             }
             else{
-                placePerso()
             }
-            srcImgPerso = "sprites/perso1.png"
             break;
         default:
     }
+    for (var i = 0; i < obstacles.length; i++) {
+        if ((persoY > obstacles[i].ymin && persoY < obstacles[i].ymax) && (persoX > obstacles[i].xmin && persoX < obstacles[i].xmax)){
+            if (dir == 0){
+                persoY += 10
+            }
+            else if (dir == 1){
+                persoX -= 10
+            }
+            else if (dir == 2){
+                persoY -= 10
+            }
+            else if (dir == 3){
+                persoX += 10
+            }
+        }
+        else{
+            placePerso()
+        }
+}
+
+    n++
+    if (n == 4) {
+        n = 0
+    }
     perso.setAttribute('src', srcImgPerso)
-    if (persoX == 400 && persoY == 400) {
-        //setTimeout(enterHouse(), 5000)
+    if (persoX == 380 && persoY == 380) {
         door.setAttribute('src','sprites/opendoor.png')
+        // enterHouse()
     }
 })
+// window.addEventListener('keyup', (e) => {
+//     n = 0
+//     srcImgPerso = "sprites/face_sprite" + n + ".png"
+//     perso.setAttribute('src', srcImgPerso)
+//     placePerso()
+// })
 function enterHouse(){
     window.location.href="https://www.google.fr/"
 }
 function placePerso(){
     perso.style.top = persoY + 'px'
     perso.style.left = persoX + 'px'
-    console.log(parseInt(perso.style.left))
-    console.log(parseInt(perso.style.top))
+    console.log("X :"+parseInt(perso.style.left))
+    console.log("Y :"+parseInt(perso.style.top))
 }
