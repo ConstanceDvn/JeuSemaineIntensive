@@ -1,7 +1,10 @@
 body{
     background-color: rgb(62, 62, 62);
 }
-#village{
+*{
+    user-select: none;
+}
+#background{
     z-index: -1;
     position: absolute;
     top:0px;
