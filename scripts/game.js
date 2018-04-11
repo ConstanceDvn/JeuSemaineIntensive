@@ -1,4 +1,4 @@
-let perso, persoX, persoY, dir = 2, n = 0, background, dialogue
+let perso, persoX, persoY, dir = 2, n = 0, background
 // Listes des collisions sur la carte
 let obstacles = [
     {ymin:60,ymax:170,xmin:10,xmax:140},
@@ -63,28 +63,23 @@ let obstacles = [
 ]
 // Liste des portes sur la carte
 let doors = [
-    {ydoor:140,xdoor:230,xdoor2:240, door: 1, visited: false},
-    {ydoor:140,xdoor:480,xdoor2:490, door: 2, visited: false},
-    {ydoor:140,xdoor:930,xdoor2:940, door: 3, visited: false},
-    {ydoor:420,xdoor:930,xdoor2:940, door: 4, visited: false},
+    {ydoor:140,xdoor:230,xdoor2:240, door: 0, visited: false},
+    {ydoor:140,xdoor:480,xdoor2:490, door: 1, visited: false},
+    {ydoor:140,xdoor:930,xdoor2:940, door: 2, visited: false},
+    {ydoor:420,xdoor:930,xdoor2:940, door: 3, visited: false},
+    {ydoor:390,xdoor:580,xdoor2:590, door: 4, visited: false},
     {ydoor:390,xdoor:580,xdoor2:590, door: 5, visited: false},
-    {ydoor:390,xdoor:580,xdoor2:590, door: 6, visited: false},
+    {ydoor:360,xdoor:360,xdoor2:370, door: 6, visited: false},
 ]
-let repliques =[
-        {perso: "marchand",
-        replique:
-        {
-        r1: "Marchand : *nom du joueur*, j’ai entendu ce qui est arrivé à Louise… Pauvre fille, qu’elle repose en paix."
-        r2: "Hibou : Pauvre fille, qu’elle repose en paix."
-        r3: "*nom du joueur* : Tu es ouvert toute la nuit, tu as entendu quelque chose ? N’importe quoi ? <br /> Youssef le marchand : Malheureusement je n’ai pas pu voir ce qui est arrivé à Louise, je faisais une sieste à ce moment et j’ai été réveillé par ses cris d’agonie. Néanmoins, j’ai pu apercevoir une silhouette dans la pénombre sortir de chez elle en vitesse. Je n’ai pas pu distinguer de qui il s’agissait, désolé."
-        r4: "Je vois que tu vends des armes, donne moi la liste des tes derniers acheteurs d’armes. Spécialement ceux qui t’ont acheté des couteaux. <br /> Je ne peux rien te révéler, pardonnes-moi *nom du joueur* mais j’ai une réputation à tenir, une réputation qui tient sur ma capacité à garder le secret professionnel inviolé."
-        r5: "Je n’ai jamais vu cet oiseau, il vient d’où et… c’est moi où il répète tout ce qu’il entend ? <br /> Youssef le marchand : Ahah, j’ai amené cet oiseau de mon dernier voyage au pays des épices. J’ai décidé de l’installer en boutique pour qu’il me tienne compagnie. En effet, il répète tout ce qu’il entend, c’est un oiseau magique."
-        }
-    }
+let repliques = [
+        "Marchand : *nom du joueur*, j’ai entendu ce qui est arrivé à Louise… Pauvre fille, qu’elle repose en paix.",
+        "Hibou : Pauvre fille, qu’elle repose en paix.",
+        "*nom du joueur* : Tu es ouvert toute la nuit, tu as entendu quelque chose ? N’importe quoi ? <br /> Youssef le marchand : Malheureusement je n’ai pas pu voir ce qui est arrivé à Louise, je faisais une sieste à ce moment et j’ai été réveillé par ses cris d’agonie. Néanmoins, j’ai pu apercevoir une silhouette dans la pénombre sortir de chez elle en vitesse. Je n’ai pas pu distinguer de qui il s’agissait, désolé.",
+        "Je vois que tu vends des armes, donne moi la liste des tes derniers acheteurs d’armes. Spécialement ceux qui t’ont acheté des couteaux. <br /> Je ne peux rien te révéler, pardonnes-moi *nom du joueur* mais j’ai une réputation à tenir, une réputation qui tient sur ma capacité à garder le secret professionnel inviolé.",
+        "Je n’ai jamais vu cet oiseau, il vient d’où et… c’est moi où il répète tout ce qu’il entend ? <br /> Youssef le marchand : Ahah, j’ai amené cet oiseau de mon dernier voyage au pays des épices. J’ai décidé de l’installer en boutique pour qu’il me tienne compagnie. En effet, il répète tout ce qu’il entend, c’est un oiseau magique."
 ]
 //Initialisation du jeu
 init()
-console.log('ok')
 function init(){
     // Création de la map
     background = document.createElement("img")
@@ -186,18 +181,36 @@ window.addEventListener('keydown', (e) => {
     for (var i = 0; i < doors.length; i++) {
         if ((persoY == doors[i].ydoor && (persoX == doors[i].xdoor || persoX == doors[i].xdoor2)) && dir == 0) {
                 enterHouse(doors[i].door)
-            }
+        }
     }
 })
 function enterHouse(index){
-    if (index == 1) {
+    if (index == 6) {
     srcImgBg = "sprites/marchand.jpg"
     background.setAttribute('src', srcImgBg)
     perso.style.display = "none";
     dialogue.style.display = "block"
+    let j=0;
+    dialogue.innerHTML = repliques[j]
+    document.addEventListener('click', (e) => {
+                if(j < repliques.length - 1){
+                    j++
+                    dialogue.innerHTML = repliques[j]
+                    console.log(j)
+                    console.log(e.keyCode)
+                }
+                else{
+                    srcImgBg = "sprites/village.png"
+                    background.setAttribute('src', srcImgBg)
+                    perso.style.display = "block"
+                    dialogue.style.display = "none"
+                    j = 0
+                }
+    })
     }
 }
 function placePerso(){
     perso.style.top = persoY + 'px'
     perso.style.left = persoX + 'px'
 }
+// console.log(repliques[0].replique.r1)
