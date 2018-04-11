@@ -4,6 +4,13 @@ body{
 *{
     user-select: none;
 }
+.container{
+    position:relative;
+    top:0px
+    left:0px;
+    width:1322px;
+    height:750px;
+}
 #background{
     z-index: -1;
     position: absolute;
@@ -24,4 +31,16 @@ body{
     left:248px;
     height:40px;
     width:40px;
+}
+#dialogue{
+    position: absolute;
+    right:30px;
+    bottom:30px;
+    background-color: rgba(255,255,255,0.8);
+    border: solid 4px rgb(89, 71, 35);
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px;
+    width:840px;
+    height:40px;
 }

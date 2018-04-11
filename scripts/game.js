@@ -1,6 +1,5 @@
-let perso, persoX, persoY, dir = 2, n = 0, village
-door = document.querySelector(".door")
-// Listes des collision sur la carte
+let perso, persoX, persoY, dir = 2, n = 0, background, dialogue
+// Listes des collisions sur la carte
 let obstacles = [
     {ymin:60,ymax:170,xmin:10,xmax:140},
     {ymin:30,ymax:140,xmin:170,xmax:330},
@@ -71,16 +70,34 @@ let doors = [
     {ydoor:390,xdoor:580,xdoor2:590, door: 5, visited: false},
     {ydoor:390,xdoor:580,xdoor2:590, door: 6, visited: false},
 ]
+let repliques =[
+        {perso: "marchand",
+        replique:
+        {
+        r1: "Marchand : *nom du joueur*, j’ai entendu ce qui est arrivé à Louise… Pauvre fille, qu’elle repose en paix."
+        r2: "Hibou : Pauvre fille, qu’elle repose en paix."
+        r3: "*nom du joueur* : Tu es ouvert toute la nuit, tu as entendu quelque chose ? N’importe quoi ? <br /> Youssef le marchand : Malheureusement je n’ai pas pu voir ce qui est arrivé à Louise, je faisais une sieste à ce moment et j’ai été réveillé par ses cris d’agonie. Néanmoins, j’ai pu apercevoir une silhouette dans la pénombre sortir de chez elle en vitesse. Je n’ai pas pu distinguer de qui il s’agissait, désolé."
+        r4: "Je vois que tu vends des armes, donne moi la liste des tes derniers acheteurs d’armes. Spécialement ceux qui t’ont acheté des couteaux. <br /> Je ne peux rien te révéler, pardonnes-moi *nom du joueur* mais j’ai une réputation à tenir, une réputation qui tient sur ma capacité à garder le secret professionnel inviolé."
+        r5: "Je n’ai jamais vu cet oiseau, il vient d’où et… c’est moi où il répète tout ce qu’il entend ? <br /> Youssef le marchand : Ahah, j’ai amené cet oiseau de mon dernier voyage au pays des épices. J’ai décidé de l’installer en boutique pour qu’il me tienne compagnie. En effet, il répète tout ce qu’il entend, c’est un oiseau magique."
+        }
+    }
+]
 //Initialisation du jeu
 init()
 console.log('ok')
 function init(){
-    // Création du personnage et placement du personnage
+    // Création de la map
     background = document.createElement("img")
     let srcImgBg = "sprites/village.png"
     background.setAttribute('src', srcImgBg)
     background.setAttribute('id', 'background')
-    document.querySelector('body').appendChild(background)
+    document.querySelector('.container').appendChild(background)
+    // Création de la boite de dialogue
+    dialogue = document.createElement("div")
+    dialogue.setAttribute('id', 'dialogue')
+    dialogue.style.display = "none"
+    document.querySelector('.container').appendChild(dialogue)
+    dialogue.innerHTML = "vous savez je ne pense pas qu'il y est de bonne ou de mauvaise situation lorem ipsum dolor esta ki move les prout douchia stekli monte la boiut"
     // Création du personnage et placement du personnage
     perso = document.createElement("img")
     let srcImgPerso = "sprites/face_sprite0.png"
@@ -88,14 +105,15 @@ function init(){
     perso.setAttribute('id', 'charac')
     persoX = 250
     persoY = 390
-    document.querySelector('body').appendChild(perso)
+    document.querySelector('.container').appendChild(perso)
     placePerso()
 }
 // Déplacement du personnage
 window.addEventListener('keydown', (e) => {
     switch (e.keyCode) {
         // Vers le haut
-        case 90 :
+        case 90:
+        case 38:
             dir = 0
             persoY -= 10
             srcImgPerso = "sprites/back_sprite" + n + ".png"
@@ -104,7 +122,8 @@ window.addEventListener('keydown', (e) => {
             }
             break;
             // À droite
-        case 68 :
+        case 68:
+        case 39:
             dir = 1
             persoX += 10
             srcImgPerso = "sprites/right_sprite" + n + ".png"
@@ -113,7 +132,8 @@ window.addEventListener('keydown', (e) => {
             }
             break;
             // Vers le bas
-        case 83 :
+        case 83:
+        case 40:
             dir = 2
             persoY += 10
             srcImgPerso = "sprites/face_sprite" + n + ".png"
@@ -122,7 +142,8 @@ window.addEventListener('keydown', (e) => {
             }
             break;
             // À gauche
-        case 81 :
+        case 81:
+        case 37:
             dir = 3
             persoX -= 10
             srcImgPerso = "sprites/left_sprite" + n + ".png"
@@ -132,8 +153,15 @@ window.addEventListener('keydown', (e) => {
             break;
         default:
     }
+    n++
+    if (n == 4) {
+        n = 0
+    }
+    perso.setAttribute('src', srcImgPerso)
+
     console.log(perso.style.left)
     console.log(perso.style.top)
+
     // Gestion des collisions
     for (var i = 0; i < obstacles.length; i++) {
         if ((persoY > obstacles[i].ymin && persoY < obstacles[i].ymax) && (persoX > obstacles[i].xmin && persoX < obstacles[i].xmax)){
@@ -154,16 +182,10 @@ window.addEventListener('keydown', (e) => {
             placePerso()
         }
 }
-    n++
-    if (n == 4) {
-        n = 0
-    }
-    perso.setAttribute('src', srcImgPerso)
-
     // Gestion des portes
     for (var i = 0; i < doors.length; i++) {
         if ((persoY == doors[i].ydoor && (persoX == doors[i].xdoor || persoX == doors[i].xdoor2)) && dir == 0) {
-                enterHouse(doors[i].door,)
+                enterHouse(doors[i].door)
             }
     }
 })
@@ -172,6 +194,7 @@ function enterHouse(index){
     srcImgBg = "sprites/marchand.jpg"
     background.setAttribute('src', srcImgBg)
     perso.style.display = "none";
+    dialogue.style.display = "block"
     }
 }
 function placePerso(){
