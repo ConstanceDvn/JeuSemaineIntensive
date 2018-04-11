@@ -213,4 +213,3 @@ function placePerso(){
     perso.style.top = persoY + 'px'
     perso.style.left = persoX + 'px'
 }
-// console.log(repliques[0].replique.r1)
