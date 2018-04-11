@@ -7,6 +7,8 @@ body{
 #background{
     z-index: -1;
     position: absolute;
+    width:1322px;
+    height:750px;
     top:0px;
     left:0px;
     box-shadow: 5px 5px 5px;
