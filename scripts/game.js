@@ -243,6 +243,7 @@ function enterHouse(index){
                 }
                 else{
                     replaceVillage()
+                    j = 0
                 }
     })
     }
@@ -256,10 +257,12 @@ function enterHouse(index){
     document.addEventListener('click', (e) => {
                 if(j < repliquessavant.length - 1){
                     j++
+                    console.log(j)
                     dialogue.innerHTML = repliquessavant[j]
                 }
                 else{
                     replaceVillage()
+                    j = 0
                 }
     })
     }
@@ -273,10 +276,12 @@ function enterHouse(index){
     document.addEventListener('click', (e) => {
                 if(j < repliquessorciere.length - 1){
                     j++
+                    console.log(j)
                     dialogue.innerHTML = repliquessorciere[j]
                 }
                 else{
                     replaceVillage()
+                    j = 0
                 }
     })
     }
@@ -290,6 +295,7 @@ function enterHouse(index){
     document.addEventListener('click', (e) => {
                 if(j < repliquestavernier.length - 1){
                     j++
+                    console.log(j)
                     dialogue.innerHTML = repliquestavernier[j]
                 }
                 else{
