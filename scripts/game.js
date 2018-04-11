@@ -1,6 +1,7 @@
 let perso, persoX, persoY, dir = 2, n = 0, village
 door = document.querySelector(".door")
-village = document.querySelector("#village")
+background = document.querySelector("#background")
+// Listes des collision sur la carte
 let obstacles = [
     {ymin:60,ymax:170,xmin:10,xmax:140},
     {ymin:30,ymax:140,xmin:170,xmax:330},
@@ -68,9 +69,15 @@ let obstacles = [
     {ymin:0,ymax:0,xmin:0,xmax:0},
 
 ]
+// Liste des portes sur la carte
 let doors = [
-  {}
+    {ydoor:140,xdoor:230,xdoor2:240},
+    {ydoor:140,xdoor:480,xdoor2:490},
+    {ydoor:140,xdoor:930,xdoor2:940},
+    {ydoor:420,xdoor:930,xdoor2:940},
+    {ydoor:390,xdoor:580,xdoor2:590},
 ]
+//Initialisation du jeu
 init()
 console.log('ok')
 function init(){
@@ -96,8 +103,6 @@ window.addEventListener('keydown', (e) => {
             if (persoY < 0 || persoY > window.innerHeight) {
                 persoY += 10
             }
-            else{
-            }
             break;
             // À droite
         case 68 :
@@ -107,8 +112,6 @@ window.addEventListener('keydown', (e) => {
             srcImgPerso = "sprites/right_sprite" + n + ".png"
             if (persoX < 0 || persoX > window.innerWidth - 1) {
                 persoX -= 10
-            }
-            else{
             }
             break;
             // Vers le bas
@@ -120,8 +123,6 @@ window.addEventListener('keydown', (e) => {
             if (persoY < 0 || persoY > window.innerHeight) {
                 persoY -= 10
             }
-            else{
-            }
             break;
             // À gauche
         case 81 :
@@ -132,11 +133,10 @@ window.addEventListener('keydown', (e) => {
             if (persoX < 0 || persoX > window.innerWidth - 1) {
                 persoX += 10
             }
-            else{
-            }
             break;
         default:
     }
+    // Gestion des collisions
     for (var i = 0; i < obstacles.length; i++) {
         if ((persoY > obstacles[i].ymin && persoY < obstacles[i].ymax) && (persoX > obstacles[i].xmin && persoX < obstacles[i].xmax)){
             if (dir == 0){
@@ -156,23 +156,22 @@ window.addEventListener('keydown', (e) => {
             placePerso()
         }
 }
-
     n++
     if (n == 4) {
         n = 0
     }
     perso.setAttribute('src', srcImgPerso)
-    if (persoX == 380 && persoY == 380) {
-        door.setAttribute('src','sprites/opendoor.png')
-        // enterHouse()
+
+    // Gestion des portes
+    for (var i = 0; i < doors.length; i++) {
+        if ((persoY == doors[i].ydoor && (persoX == doors[i].xdoor || persoX == doors[i].xdoor2)) && dir == 0) {
+            console.log("LETS GOOO")
+        }
     }
 })
-// window.addEventListener('keyup', (e) => {
-//     n = 0
-//     srcImgPerso = "sprites/face_sprite" + n + ".png"
-//     perso.setAttribute('src', srcImgPerso)
-//     placePerso()
-// })
+function changeBackground(){
+
+}
 function enterHouse(){
     window.location.href="https://www.google.fr/"
 }
