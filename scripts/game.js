@@ -196,18 +196,19 @@ function enterHouse(index){
                 if(j < repliques.length - 1){
                     j++
                     dialogue.innerHTML = repliques[j]
-                    console.log(j)
-                    console.log(e.keyCode)
                 }
                 else{
-                    srcImgBg = "sprites/village.png"
-                    background.setAttribute('src', srcImgBg)
-                    perso.style.display = "block"
-                    dialogue.style.display = "none"
-                    j = 0
+                    replaceVillage()
                 }
     })
     }
+}
+function replaceVillage(){
+    srcImgBg = "sprites/village.png"
+    background.setAttribute('src', srcImgBg)
+    perso.style.display = "block"
+    dialogue.style.display = "none"
+    j = 0
 }
 function placePerso(){
     perso.style.top = persoY + 'px'
