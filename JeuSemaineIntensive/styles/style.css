@@ -1,0 +1,83 @@
+body {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.45)
+    ),url(../images/decors-jeu-combat-097.gif);
+  background-size: 100%;
+  background-repeat:no-repeat;
+  background-color: #000000;
+  height: 100vh;
+
+}
+/*Nom du jeu*/
+#title {
+  width: 60%;
+  display: block;
+  margin: auto;
+  padding: 40px;
+}
+#description {
+  font-family: 'Josefin Slab', serif;
+  font-size: 20px;
+  display: block;
+  margin: auto;
+  text-align: center;
+  color: #FAFAFA;
+  width: 50%;
+  padding: 15px;
+  line-height: 21px;
+}
+/*Règles du jeu*/
+.rules {
+  font-family: 'Josefin Slab', serif;
+  color: #FAFAFA;
+  display: block;
+  margin: auto;
+  text-align: center;
+  margin-top: 6%;
+  font-size: 16px;
+  text-decoration: underline;
+}
+#explanations {
+  font-family: 'Josefin Slab', serif;
+  color: #FAFAFA;
+  margin: auto;
+  text-align: center;
+  margin-top: 1%;
+  font-size: 15px;
+  width: 50%;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.current {
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: 100px !important;
+}
+/*Bouton jouer*/
+a {
+  text-decoration: none;
+}
+button {
+  border: 1px solid #1E7FCB;
+  background: none;
+  color: #1E7FCB;
+  padding: 15px;
+  font-size: 20px;
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+  font-family: 'Press Start 2P', cursive;
+}
+
+#copyright {
+  font-family: 'Josefin Slab', serif;
+  color: #FAFAFA;
+  display: block;
+  margin: auto;
+  text-align: center;
+  margin-top: 35px;
+  font-size: 14px;
+}
