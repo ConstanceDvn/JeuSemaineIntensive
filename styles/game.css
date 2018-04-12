@@ -11,7 +11,6 @@ body{
     width:1322px;
     height:750px;
 }
-/*map*/
 #background{
     z-index: -1;
     position: absolute;
@@ -20,24 +19,6 @@ body{
     top:0px;
     left:0px;
     box-shadow: 5px 5px 5px;
-}
-/*icone pour les indices*/
-#indices {
-  width: 150px;
-  margin-left: 90%;
-}
-/*Montrer les indices*/
-.showIndices {
-  background: #0a0a0a;
-  position: absolute;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  width: 80%;
-  height: 80%;
-  opacity: 0.7;
-  color: #FAFAFA;
-  font-family: 'Josefin Slab', serif;
 }
 #charac{
     position:absolute;
@@ -62,5 +43,28 @@ body{
     padding: 30px;
     width:840px;
     height:100px;
-    font-family: 'Josefin Slab', serif;
+}
+#end{
+    position: absolute;
+    width:1322px;
+    height:750px;
+    display: none;
+}
+#end p{
+    text-align: center;
+    color:#1e1e1e;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+}
+#end ul{
+    position: absolute;
+    right: 450px;
+    top:100px;
+    padding:80px;
+    border-radius:10px;
+    color:#1e1e1e;
+    background: rgba(255,255,255, 0.8)
+}
+#end ul li{
+    cursor: pointer;
 }
