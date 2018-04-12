@@ -44,3 +44,27 @@ body{
     width:840px;
     height:100px;
 }
+#end{
+    position: absolute;
+    width:1322px;
+    height:750px;
+    display: none;
+}
+#end p{
+    text-align: center;
+    color:#1e1e1e;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+}
+#end ul{
+    position: absolute;
+    right: 450px;
+    top:100px;
+    padding:80px;
+    border-radius:10px;
+    color:#1e1e1e;
+    background: rgba(255,255,255, 0.8)
+}
+#end ul li{
+    cursor: pointer;
+}

@@ -1,4 +1,4 @@
-let perso, persoX, persoY, dir = 2, n = 0, background
+let perso, persoX, persoY, dir = 2, n = 0, background, inHouse = false, end, indices = 5
 // Listes des collisions sur la carte
 let obstacles = [
     {ymin:60,ymax:170,xmin:10,xmax:140},
@@ -205,7 +205,7 @@ window.addEventListener('keydown', (e) => {
 
 
     // Gestion des collisions
-    for (var i = 0; i < obstacles.length; i++) {
+    for (let i = 0; i < obstacles.length; i++) {
         if ((persoY > obstacles[i].ymin && persoY < obstacles[i].ymax) && (persoX > obstacles[i].xmin && persoX < obstacles[i].xmax)){
             if (dir == 0){
                 persoY += 10
@@ -225,20 +225,24 @@ window.addEventListener('keydown', (e) => {
         }
 }
     // Gestion des portes
-    for (var i = 0; i < doors.length; i++) {
+    for (let i = 0; i < doors.length; i++) {
         if ((persoY == doors[i].ydoor && (persoX == doors[i].xdoor || persoX == doors[i].xdoor2)) && dir === 0) {
                 enterHouse(doors[i].door)
+                inHouse = true
+                console.log(inHouse)
         }
     }
 })
+
 console.log()
+// Remettre le village en sortant d'une maison
 function replaceVillage(){
     srcImgBg = "sprites/village.png"
     background.setAttribute('src', srcImgBg)
     perso.style.display = "block"
     dialogue.style.display = "none"
 }
-
+// Rentrer dans une maison précise grace à l'index.
 function enterHouse(index){
     if (index == 0) {
     srcImgBg = "sprites/marchand.jpg"
@@ -247,7 +251,6 @@ function enterHouse(index){
     dialogue.style.display = "block"
     let j=0;
     dialogue.innerHTML = repliquesmarchand[j]
-
     document.addEventListener('click', (e) => {
                 if(j < repliquesmarchand.length - 1){
                     j++
@@ -256,10 +259,10 @@ function enterHouse(index){
 
                 }
                 else{
-                    (e).preventDefault()
                     j=0
                     replaceVillage()
                     console.log(j)
+                    endOfGame()
                 }
                 console.log(j)
     })
@@ -281,6 +284,7 @@ function enterHouse(index){
                     replaceVillage()
                     j=0
                     console.log(j)
+                    endOfGame()
                 }
 
     })
@@ -302,6 +306,7 @@ function enterHouse(index){
                     replaceVillage()
                     j=0
                     console.log(j)
+                    endOfGame()
                 }
 
     })
@@ -322,11 +327,28 @@ function enterHouse(index){
                     replaceVillage()
                     j=0
                     console.log(j)
+                    endOfGame()
                 }
     })
 }
 }
-
+function endOfGame(){
+    if (indices == 5) {
+        srcImgBg = "sprites/ancien.jpg"
+        background.setAttribute('src', srcImgBg)
+        end = document.querySelector('#end')
+        end.style.display = 'block'
+        perso.style.display = "none"
+        let murder = document.querySelector('.choice')
+        murder.addEventListener('click', (e) => {
+            e.preventDefault()
+            srcImgBg = "sprites/win.png"
+            background.setAttribute('src', srcImgBg)
+            end.style.display = "none"
+        })
+        
+}
+}
 function placePerso(){
     perso.style.top = persoY + 'px'
     perso.style.left = persoX + 'px'
