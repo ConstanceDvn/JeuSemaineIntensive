@@ -44,7 +44,7 @@ let obstacles = [
     {ymin:140,ymax:180,xmin:340,xmax:370},
     {ymin:220,ymax:260,xmin:120,xmax:280},
     {ymin:530,ymax:560,xmin:50,xmax:110},
-    {ymin:570,ymax:620,xmin:0,xmax:60},
+    {ymin:520,ymax:560,xmin:20,xmax:60}, // le fou
     {ymin:640,ymax:710,xmin:-10,xmax:30},
     {ymin:290,ymax:380,xmin:200,xmax:290},
     {ymin:220,ymax:330,xmin:120,xmax:160},
@@ -60,6 +60,8 @@ let obstacles = [
     {ymin:230,ymax:260,xmin:790,xmax:830},
     {ymin:100,ymax:170,xmin:760,xmax:830},
     {ymin:690,ymax:720,xmin:110,xmax:170},
+    {ymin:610,ymax:720,xmin:10,xmax:40},
+
 ]
 // Liste des portes sur la carte
 let doors = [
@@ -67,40 +69,52 @@ let doors = [
     {ydoor:140,xdoor:480,xdoor2:490, door: 1, visited: false},
     {ydoor:140,xdoor:930,xdoor2:940, door: 2, visited: false},
     {ydoor:420,xdoor:930,xdoor2:940, door: 3, visited: false},
-    {ydoor:390,xdoor:580,xdoor2:590, door: 4, visited: false},
+    {ydoor:390,xdoor:570,xdoor2:590, door: 4, visited: false},
     {ydoor:360,xdoor:360,xdoor2:370, door: 5, visited: false},
-    {ydoor:490,xdoor:40,xdoor2:50, door: 6, visited: false},
+    {ydoor:410,xdoor:810,xdoor2:840, door: 6, visited: false},
+    {ydoor:560,xdoor:30,xdoor2:50, door: 7, visited: false},
+    {ydoor:360,xdoor:400,xdoor2:430, door: 8, visited: false},
+    {ydoor:360,xdoor:340,xdoor2:370, door: 9, visited: false}
 ]
 let repliquesancien = [
-        "Ancien : *nom du joueur*, tu es le protecteur de notre village depuis des années maintenant, je compte sur toi pour élucider ce meurtre…Pauvre Louise, si jeune et si belle… nous la vengerons.",
-        "Laissez moi une journée vieil homme, je trouverai qui a fait ça. (dans ses pensées : Louise… je n’aurais pas dû t’abandonner. Pardonnes moi.)",
-        "*nom du joueur* : Tu es ouvert toute la nuit, tu as entendu quelque chose ? N’importe quoi ? <br /> Youssef le marchand : Malheureusement je n’ai pas pu voir ce qui est arrivé à Louise, je faisais une sieste à ce moment et j’ai été réveillé par ses cris d’agonie. Néanmoins, j’ai pu apercevoir une silhouette dans la pénombre sortir de chez elle en vitesse. Je n’ai pas pu distinguer de qui il s’agissait, désolé.",
-        "Je vois que tu vends des armes, donne moi la liste des tes derniers acheteurs d’armes. Spécialement ceux qui t’ont acheté des couteaux. <br /> Je ne peux rien te révéler, pardonnes-moi *nom du joueur* mais j’ai une réputation à tenir, une réputation qui tient sur ma capacité à garder le secret professionnel inviolé.",
-        "Je n’ai jamais vu cet oiseau, il vient d’où et… c’est moi où il répète tout ce qu’il entend ? <br /> Youssef le marchand : Ahah, j’ai amené cet oiseau de mon dernier voyage au pays des épices. J’ai décidé de l’installer en boutique pour qu’il me tienne compagnie. En effet, il répète tout ce qu’il entend, c’est un oiseau magique."
+        "<b>Ancien :</b> héros, tu es le protecteur de notre village depuis des années maintenant, je compte sur toi pour élucider ce meurtre…Pauvre Louise, si jeune et si belle… nous la vengerons.",
+        "<b>héros:</b> Laissez moi une journée vieil homme, je trouverai qui a fait ça. (dans ses pensées : Louise… je n’aurais pas dû t’abandonner. Pardonnes moi.)",
+        "<b>Ancien:</b> Faite vite héros! l'intégrité du village est en périle!",
+        "*L’ancien s’en va.*",
+        "<b>Héros, à lui-même :</b> “Il est grand temps d’interroger nos chers villageois. Le tueur se trouve parmi nous.”",
 ]
+
+let repliqueslouise = [
+        "scène du crime",
+        "scène du crime",
+        "scène du crime",
+        "scène du crime",
+        "scène du crime"
+]
+
 let repliquesmarchand = [
-        "Marchand : *nom du joueur*, j’ai entendu ce qui est arrivé à Louise… Pauvre fille, qu’elle repose en paix.",
-        "Hibou : Pauvre fille, qu’elle repose en paix.",
-        "*nom du joueur* : Tu es ouvert toute la nuit, tu as entendu quelque chose ? N’importe quoi ? <br /> Youssef le marchand : Malheureusement je n’ai pas pu voir ce qui est arrivé à Louise, je faisais une sieste à ce moment et j’ai été réveillé par ses cris d’agonie. Néanmoins, j’ai pu apercevoir une silhouette dans la pénombre sortir de chez elle en vitesse. Je n’ai pas pu distinguer de qui il s’agissait, désolé.",
-        "Je vois que tu vends des armes, donne moi la liste des tes derniers acheteurs d’armes. Spécialement ceux qui t’ont acheté des couteaux. <br /> Je ne peux rien te révéler, pardonnes-moi *nom du joueur* mais j’ai une réputation à tenir, une réputation qui tient sur ma capacité à garder le secret professionnel inviolé.",
-        "Je n’ai jamais vu cet oiseau, il vient d’où et… c’est moi où il répète tout ce qu’il entend ? <br /> Youssef le marchand : Ahah, j’ai amené cet oiseau de mon dernier voyage au pays des épices. J’ai décidé de l’installer en boutique pour qu’il me tienne compagnie. En effet, il répète tout ce qu’il entend, c’est un oiseau magique."
+        "<b>Marchand :</b> héros, j’ai entendu ce qui est arrivé à Louise… Pauvre fille, qu’elle repose en paix.",
+        "<b>Hibou :</b> Pauvre fille, qu’elle repose en paix.",
+        "<b>héros :</b> Tu es ouvert toute la nuit, tu as entendu quelque chose ? N’importe quoi ? <br /> <b>Youssef le marchand :</b> Malheureusement je n’ai pas pu voir ce qui est arrivé à Louise, je faisais une sieste à ce moment et j’ai été réveillé par ses cris d’agonie. Néanmoins, j’ai pu apercevoir une silhouette dans la pénombre sortir de chez elle en vitesse. Je n’ai pas pu distinguer de qui il s’agissait, désolé.",
+        "<b>héros:</b>Je vois que tu vends des armes, donne moi la liste des tes derniers acheteurs d’armes. Spécialement ceux qui t’ont acheté des couteaux. <br /> <b>Youssef le marchand:</b>Je ne peux rien te révéler, pardonnes-moi héros mais j’ai une réputation à tenir, une réputation qui tient sur ma capacité à garder le secret professionnel inviolé.",
+        "<b>héros:</b>Je n’ai jamais vu cet oiseau, il vient d’où et… c’est moi où il répète tout ce qu’il entend ? <br /> <b>Youssef le marchand :</b> Ahah, j’ai amené cet oiseau de mon dernier voyage au pays des épices. J’ai décidé de l’installer en boutique pour qu’il me tienne compagnie. En effet, il répète tout ce qu’il entend, c’est un oiseau magique."
 ]
 let repliquessavant = [
-        "Savant fou : Comment oses-tu déranger un génie tel que moi en plein dans son oeuvre petit ver de terre ? Que veux tu ? Dépêche-toi.",
-        "Héros : Louise est morte, j’enquête et tu es suspect",
-        "Savant fou : Et alors ? On meurt tous un jour.",
-        "Héros : Que pensez vous du meurtre d’hier soir ? <br /> Savant fou : Je préfère ne pas m’en mêler.",
-        "Héros : Les lunettes cassées, elles sont à vous ? <br /> Savant fou : Oui. Arrêtez de regarder dans mon laboratoire et partez au plus vite."
+        "<b>Savant fou :</b> Comment oses-tu déranger un génie tel que moi en plein dans son oeuvre petit ver de terre ? Que veux tu ? Dépêche-toi.",
+        "<b>Héros :</b> Louise est morte, j’enquête et tu es suspect",
+        "<b>Savant fou :</b> Et alors ? On meurt tous un jour.",
+        "<b>Héros :</b> Que pensez vous du meurtre d’hier soir ? <br /> <b>Savant fou :</b> Je préfère ne pas m’en mêler.",
+        "<b>Héros :</b> Les lunettes cassées, elles sont à vous ? <br /><b> Savant fou :</b> Oui. Arrêtez de regarder dans mon laboratoire et partez au plus vite."
 ]
 let repliquestavernier = [
-        "Les verres sont sales, vous ne travaillez plus ? <br /> J’ai… oublié de les nettoyer hier soir. Vous savez, cette histoire de mort ça nous a tous chamboulés.",
-        "C’est quoi cette bouteille vide ? Il me semblait bien vous avoir entendu dire que vous ne buviez jamais malgré votre métier.<br /> Comme je l’ai dis j’ai oublié de nettoyer hier soir. Sûrement une bouteille finie par un client. ",
-        "Que pensez-vous du meurtre de Louise ?<br />  C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
-        "Où étiez-vous hier soir ? <br /> Dans ma chambre, j’ai eu une sale soirée…",
-        "Où est la mercenaire dont vous m’aviez parlé ? <br />  Je vous l’amène."
+        "<b>héros:</b>Les verres sont sales, vous ne travaillez plus ? <br /> <b>tavernier:</b>J’ai… oublié de les nettoyer hier soir. Vous savez, cette histoire de mort ça nous a tous chamboulés.",
+        "<b>héros:</b>C’est quoi cette bouteille vide ? Il me semblait bien vous avoir entendu dire que vous ne buviez jamais malgré votre métier.<br /> <b>tavernier:</b>Comme je l’ai dis j’ai oublié de nettoyer hier soir. Sûrement une bouteille finie par un client. ",
+        "<b>héros:</b>Que pensez-vous du meurtre de Louise ?<br /> <b>tavernier:</b> C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
+        "<b>héros:</b>Où étiez-vous hier soir ? <br /> Dans ma chambre, j’ai eu une sale soirée…",
+        "<b>tavernier:</b>Où est la mercenaire dont vous m’aviez parlé ? <br /> Elle est devant la taverne."
 ]
 let repliquesmercenaire = [
-        "Qu’est ce qu’une mercenaire de votre trempe viens faire dans notre petit village  <br /> Je me balade de ville en ville pour trouver un adversaire à ma taille, une sorte de voyage initiatique tu vois ce que je veux dire ? Bien sûr que tu vois ! T’es un guerrier, tout comme moi !",
+        "<b>héros:</b>Qu’est ce qu’une mercenaire de votre trempe viens faire dans notre petit village  <br /> <b>mercenaire:</b>Je me balade de ville en ville pour trouver un adversaire à ma taille, une sorte de voyage initiatique tu vois ce que je veux dire ? Bien sûr que tu vois ! T’es un guerrier, tout comme moi !",
         "J’imagine que vous avez entendu parler du meurtre, qu’en pensez-vous ?<br /> Ahah, maintenant que tu poses la question, j’ai été voir la scène du crime. Ce genre d’histoires m’intéresse trop. J’en déduis, personnellement, qu’on a affaire à un crime passionnel, j’ai vu beaucoup de violence et je sais de quoi je parle. La personne qui a massacré cette pauvre fille avait de fort sentiments pour elle. ",
         "Que pensez-vous du meurtre de Louise ?<br />  C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
         "Qui est le coupable selon vous ?",
@@ -114,9 +128,11 @@ let repliquessorciere = [
         "Le savant fou ne te dit pas tout ce qu’il sait."
 ]
 let repliquesprofesseure = [
-        "Que pensais-tu de Louise ? <br /> Cette fille était trop parfaite, je ne m’étonne pas que quelqu’un lui ai sauté dessus, elle a dû refuser et la suite tu la connais.",
-        "Tu n’as pas peur qu’il puisse s’agir d’un tueur en série ? Tu pourrais être la prochaine sur la liste. <br /> Qu’il vienne, je peux me défendre.",
-        "Tu étais jalouse de Louise ? <br />  Non. Et puis quoi encore ? Comment tu peux dire quelque chose comme ça ? Et tu te dis mon ami ?"
+        "héros: Que pensais-tu de Louise ?",
+        "professeure: Cette fille était trop parfaite, je ne m’étonne pas que quelqu’un lui ai sauté dessus, elle a dû refuser et la suite tu la connais.",
+        "héros: Tu n’as pas peur qu’il puisse s’agir d’un tueur en série ? Tu pourrais être la prochaine sur la liste.",
+        "professeure:  Qu’il vienne, je peux me défendre.",
+        "héros: Tu étais jalouse de Louise ? <br /> professeure: Non. Et puis quoi encore ? Comment tu peux dire quelque chose comme ça ? Et tu te dis mon ami ?"
 ]
 let repliquesbouffon = [
         "Matthias, tu as vu quelque chose hier soir ?",
@@ -126,6 +142,10 @@ let repliquesbouffon = [
         "Le tueur regrette ce qu’il a fait."
 ]
 //Initialisation du jeu
+function placePerso(){
+    perso.style.top = persoY + 'px'
+    perso.style.left = persoX + 'px'
+}
 init()
 function init(){
     // Création de la map
@@ -226,7 +246,7 @@ window.addEventListener('keydown', (e) => {
 }
     // Gestion des portes
     for (var i = 0; i < doors.length; i++) {
-        if ((persoY == doors[i].ydoor && (persoX == doors[i].xdoor || persoX == doors[i].xdoor2)) && dir === 0) {
+        if (((persoY == doors[i].ydoor || persoY == doors[i].ydoor2) && (persoX == doors[i].xdoor || persoX == doors[i].xdoor2)) && dir == 0) {
                 enterHouse(doors[i].door)
         }
     }
@@ -325,9 +345,99 @@ function enterHouse(index){
                 }
     })
 }
+    else if (index == 6) {
+    srcImgBg = "sprites/fond_mercenaire.png"
+    background.setAttribute('src', srcImgBg)
+    perso.style.display = "none";
+    dialogue.style.display = "block"
+    let j=0;
+    dialogue.innerHTML = repliquesmercenaire[j]
+    document.addEventListener('click', (e) => {
+                if(j < repliquestavernier.length - 1){
+                    j++
+                    dialogue.innerHTML = repliquesmercenaire[j]
+                }
+                else{
+                    replaceVillage()
+                    j=0
+                    console.log(j)
+                }
+    })
 }
-
-function placePerso(){
-    perso.style.top = persoY + 'px'
-    perso.style.left = persoX + 'px'
+    else if (index == 4) {
+    srcImgBg = "sprites/ancien.jpg"
+    background.setAttribute('src', srcImgBg)
+    perso.style.display = "none";
+    dialogue.style.display = "block"
+    let j=0;
+    dialogue.innerHTML = repliquesancien[j]
+    document.addEventListener('click', (e) => {
+                if(j < repliquestavernier.length - 1){
+                    j++
+                    dialogue.innerHTML = repliquesancien[j]
+                }
+                else{
+                    replaceVillage()
+                    j=0
+                    console.log(j)
+                }
+    })
+}
+    else if (index == 9) {
+    srcImgBg = "sprites/louiseMorte.jpg"
+    background.setAttribute('src', srcImgBg)
+    perso.style.display = "none";
+    dialogue.style.display = "block"
+    let j=0;
+    dialogue.innerHTML = repliqueslouise[j]
+    document.addEventListener('click', (e) => {
+                if(j < repliquestavernier.length - 1){
+                    j++
+                    dialogue.innerHTML = repliqueslouise[j]
+                }
+                else{
+                    replaceVillage()
+                    j=0
+                    console.log(j)
+                }
+    })
+}
+    else if (index == 8) {
+    srcImgBg = "sprites/fond_professeure.png"
+    background.setAttribute('src', srcImgBg)
+    perso.style.display = "none";
+    dialogue.style.display = "block"
+    let j=0;
+    dialogue.innerHTML = repliquesprofesseure[j]
+    document.addEventListener('click', (e) => {
+                if(j < repliquestavernier.length - 1){
+                    j++
+                    dialogue.innerHTML = repliquesprofesseure[j]
+                }
+                else{
+                    replaceVillage()
+                    j=0
+                    console.log(j)
+                }
+    })
+}
+    else if (index == 7) {
+    srcImgBg = "sprites/fond_bouffon.png"
+    background.setAttribute('src', srcImgBg)
+    perso.style.display = "none";
+    dialogue.style.display = "block"
+    let j=0;
+    dialogue.innerHTML = repliquesbouffon[j]
+    document.addEventListener('click', (e) => {
+                if(j < repliquestavernier.length - 1){
+                    j++
+                    dialogue.innerHTML = repliquesbouffon[j]
+                }
+                else{
+                    replaceVillage()
+                    j=0
+                    console.log(j)
+                }
+    })
+}
 }
