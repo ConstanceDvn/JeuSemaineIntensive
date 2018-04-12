@@ -1,4 +1,4 @@
-let perso, persoX, persoY, dir = 2, n = 0, background
+let perso, persoX, persoY, dir = 2, n = 0, background, indices
 // Listes des collisions sur la carte
 let obstacles = [
     {ymin:60,ymax:170,xmin:10,xmax:140},
@@ -134,6 +134,12 @@ function init(){
     background.setAttribute('src', srcImgBg)
     background.setAttribute('id', 'background')
     document.querySelector('.container').appendChild(background)
+    // Création des indices
+    indices = document.createElement('img')
+    let srcImgIndices = "images/parchemin.png"
+    indices.setAttribute('src', srcImgIndices)
+    indices.setAttribute('id', 'indices')
+    document.querySelector('.container').appendChild(indices)
     // Création de la boite de dialogue
     dialogue = document.createElement("div")
     dialogue.setAttribute('id', 'dialogue')
