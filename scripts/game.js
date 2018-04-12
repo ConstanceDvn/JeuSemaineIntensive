@@ -236,9 +236,9 @@ function enterHouse(index){
     let j=0;
     dialogue.innerHTML = repliquesmarchand[j]
     document.addEventListener('click', (e) => {
-                if(j < repliquesmarchand.length - 1){
-                    j++
+                if(j < repliquesmarchand.length){
                     dialogue.innerHTML = repliquesmarchand[j]
+                    j++
                     console.log(j)
                 }
                 else{
@@ -255,10 +255,10 @@ function enterHouse(index){
     let j=0;
     dialogue.innerHTML = repliquessavant[j]
     document.addEventListener('click', (e) => {
-                if(j < repliquessavant.length - 1){
-                    j++
+                if(j < repliquessavant.length){
                     console.log(j)
                     dialogue.innerHTML = repliquessavant[j]
+                    j++
                 }
                 else{
                     replaceVillage()
@@ -274,10 +274,10 @@ function enterHouse(index){
     let j=0;
     dialogue.innerHTML = repliquessorciere[j]
     document.addEventListener('click', (e) => {
-                if(j < repliquessorciere.length - 1){
-                    j++
+                if(j < repliquessorciere.length){
                     console.log(j)
                     dialogue.innerHTML = repliquessorciere[j]
+                    j++
                 }
                 else{
                     replaceVillage()
@@ -293,10 +293,10 @@ function enterHouse(index){
     let j=0;
     dialogue.innerHTML = repliquestavernier[j]
     document.addEventListener('click', (e) => {
-                if(j < repliquestavernier.length - 1){
-                    j++
+                if(j < repliquestavernier.length){
                     console.log(j)
                     dialogue.innerHTML = repliquestavernier[j]
+                    j++
                 }
                 else{
                     replaceVillage()
@@ -314,4 +314,13 @@ function replaceVillage(){
 function placePerso(){
     perso.style.top = persoY + 'px'
     perso.style.left = persoX + 'px'
+}
+
+//indices trouvés
+function indices() {
+  let parchemin = document.createElement("img")
+  let srcIndices = "../images/parchemin.png"
+  parchemin.setAttribute('id', 'parchemin')
+  parchemin.setAttribute('src', srcIndices)
+  parchemin.style.display = "block"
 }

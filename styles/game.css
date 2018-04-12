@@ -44,3 +44,7 @@ body{
     width:840px;
     height:100px;
 }
+#parchemin {
+  width: 100px;
+  float:left;
+}
