@@ -1,4 +1,4 @@
-let perso, persoX, persoY, dir = 2, n = 0, background
+let perso, persoX, persoY, dir = 2, n = 0, background, end, indices = 5
 // Listes des collisions sur la carte
 let obstacles = [
     {ymin:60,ymax:170,xmin:10,xmax:140},
@@ -65,7 +65,10 @@ let obstacles = [
 
 ]
 // Liste des portes sur la carte
-let villageois = 
+let obstacles2 = [
+    {ymin:100,ymax:100,xmin:100,xmax:100, villageois : 1},
+    {ymin:100,ymax:100,xmin:100,xmax:100,villageois : 2}
+]
 let doors = [
     {ydoor:140,xdoor:230,xdoor2:240, door: 0, visited: false},
     {ydoor:140,xdoor:480,xdoor2:490, door: 1, visited: false},
@@ -281,7 +284,7 @@ function enterHouse(index){
                     (e).preventDefault()
                     j=0
                     replaceVillage()
-                    console.log(j)
+                    endOfGame()
                 }
                 console.log(j)
     })
@@ -302,7 +305,7 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    endOfGame()
                 }
 
     })
@@ -323,7 +326,7 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    endOfGame()
                 }
 
     })
@@ -343,7 +346,7 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    endOfGame()
                 }
     })
 }
@@ -362,7 +365,7 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    endOfGame()
                 }
     })
 }
@@ -381,7 +384,7 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    endOfGame()
                 }
     })
 }
@@ -400,7 +403,7 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    endOfGame()
                 }
     })
 }
@@ -419,7 +422,7 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    endOfGame()
                 }
     })
 }
@@ -438,8 +441,27 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    endOfGame()
                 }
     })
 }
 }
+/*
+function endOfGame(){
+    if (indices == 5) {
+        srcImgBg = "sprites/ancien.jpg"
+        background.setAttribute('src', srcImgBg)
+        end = document.querySelector('#end')
+        end.style.display = 'block'
+        perso.style.display = "none"
+        let murder = document.querySelector('.choice')
+        murder.addEventListener('click', (e) => {
+            e.preventDefault()
+            srcImgBg = "sprites/win.png"
+            background.setAttribute('src', srcImgBg)
+            end.style.display = "none"
+        })
+
+}
+}
+*/
