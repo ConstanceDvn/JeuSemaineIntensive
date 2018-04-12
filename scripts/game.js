@@ -1,4 +1,4 @@
-let perso, persoX, persoY, dir = 2, n = 0, background, indices = 5, end
+let perso, persoX, persoY, dir = 2, n = 0, background, indices = 0, end
 // Listes des collisions sur la carte
 let obstacles = [
     {ymin:60,ymax:170,xmin:10,xmax:140},
@@ -112,18 +112,17 @@ let repliquessavant = [
         "<b>Héros :</b> Les lunettes cassées, elles sont à vous ? <br /><b> Savant fou :</b> Oui. Arrêtez de regarder dans mon laboratoire et partez au plus vite."
 ]
 let repliquestavernier = [
-        "<b>héros : </b>Les verres sont sales, vous ne travaillez plus ? <br /> <b>tavernier : </b>J’ai… oublié de les nettoyer hier soir. Vous savez, cette histoire de mort ça nous a tous chamboulés.",
-        "<b>héros : </b>C’est quoi cette bouteille vide ? Il me semblait bien vous avoir entendu dire que vous ne buviez jamais malgré votre métier.<br /> <b>tavernier:</b>Comme je l’ai dis j’ai oublié de nettoyer hier soir. Sûrement une bouteille finie par un client. ",
-        "<b>héros : </b>Que pensez-vous du meurtre de Louise ?<br /> <b>tavernier : </b> C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
-        "<b>héros : </b>Où étiez-vous hier soir ? <br /> Dans ma chambre, j’ai eu une sale soirée…",
-        "<b>tavernier : </b>Où est la mercenaire dont vous m’aviez parlé ?<b> tavernier : </b><br /> Elle est devant la taverne."
+        "<b>Héros : </b>C’est quoi cette bouteille vide ? Il me semblait bien vous avoir entendu dire que vous ne buviez jamais malgré votre métier.<br /> <b>tavernier:</b>Comme je l’ai dis j’ai oublié de nettoyer hier soir. Sûrement une bouteille finie par un client. ",
+        "<b>Héros : </b>Que pensez-vous du meurtre de Louise ?<br /> <b>Tavernier : </b> C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
+        "<b>Héros : </b>Où étiez-vous hier soir ? <br /> <b>Tavernier : </b>Dans ma chambre, j’ai eu une sale soirée…",
+        "<b>Héros : </b>Où est la mercenaire dont vous m’aviez parlé ?<br /><b> Tavernier : </b><br /> Elle est devant la taverne."
 ]
 let repliquesmercenaire = [
-        "<b>héros : </b>Qu’est ce qu’une mercenaire de votre trempe viens faire dans notre petit village  <br /> <b>mercenaire : </b>Je me balade de ville en ville pour trouver un adversaire à ma taille, une sorte de voyage initiatique tu vois ce que je veux dire ? Bien sûr que tu vois ! T’es un guerrier, tout comme moi !",
-        "<b>héros : </b>J’imagine que vous avez entendu parler du meurtre, qu’en pensez-vous ?<br /> <b>mercenaire : </b>Ahah, maintenant que tu poses la question, j’ai été voir la scène du crime. Ce genre d’histoires m’intéresse trop. J’en déduis, personnellement, qu’on a affaire à un crime passionnel, j’ai vu beaucoup de violence et je sais de quoi je parle. La personne qui a massacré cette pauvre fille avait de fort sentiments pour elle. ",
-        "<b>héros : </b>Que pensez-vous du meurtre de Louise ?<br /> <b>mercenaire :</b> C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
-        "<b>héros : </b>Qui est le coupable selon vous ?",
-        "<b>mercenaire : </b>je ne vais pas vous le dire même si j’ai ma petite idée. Vous imaginez bien que ça retire tout le fun pour moi. Mais voici un indice : je l’ai toujours à l’oeil car si vous ne le faites pas payer, c’est moi qui m’occuperais de lui...Ou elle !"
+        "<b>Héros : </b>Qu’est ce qu’une mercenaire de votre trempe viens faire dans notre petit village  <br /> <b>mercenaire : </b>Je me balade de ville en ville pour trouver un adversaire à ma taille, une sorte de voyage initiatique tu vois ce que je veux dire ? Bien sûr que tu vois ! T’es un guerrier, tout comme moi !",
+        "<b>Héros : </b>J’imagine que vous avez entendu parler du meurtre, qu’en pensez-vous ?<br /> <b>mercenaire : </b>Ahah, maintenant que tu poses la question, j’ai été voir la scène du crime. Ce genre d’histoires m’intéresse trop. J’en déduis, personnellement, qu’on a affaire à un crime passionnel, j’ai vu beaucoup de violence et je sais de quoi je parle. La personne qui a massacré cette pauvre fille avait de fort sentiments pour elle. ",
+        "<b>Héros : </b>Que pensez-vous du meurtre de Louise ?<br /> <b>mercenaire :</b> C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
+        "<b>Héros : </b>Qui est le coupable selon vous ?",
+        "<b>Mercenaire : </b>je ne vais pas vous le dire même si j’ai ma petite idée. Vous imaginez bien que ça retire tout le fun pour moi. Mais voici un indice : je l’ai toujours à l’oeil car si vous ne le faites pas payer, c’est moi qui m’occuperais de lui...Ou elle !"
 ]
 let repliquessorciere = [
         "<b>Sorcière : </b> Jeune * nom du joueur *, je vois que ta quête de justice est ardue… Le malheur s’est abattu. Je suis prête à t’aider en te donnant quelques indices. Mais prend garde, si tu m’en demandes pas trop, tu seras miens.",
@@ -133,18 +132,18 @@ let repliquessorciere = [
         "<b>Sorcière : </b>Le savant fou ne te dit pas tout ce qu’il sait."
 ]
 let repliquesprofesseure = [
-        "<b>héros :</b> Que pensais-tu de Louise ?",
-        "<b>professeure :</b> Cette fille était trop parfaite, je ne m’étonne pas que quelqu’un lui ai sauté dessus, elle a dû refuser et la suite tu la connais.",
-        "<b>héros : </b> Tu n’as pas peur qu’il puisse s’agir d’un tueur en série ? Tu pourrais être la prochaine sur la liste.",
-        "<b>professeure :</b>  Qu’il vienne, je peux me défendre.",
-        "<b>héros :</b> Tu étais jalouse de Louise ? <br /> <b>professeue :</b> Non. Et puis quoi encore ? Comment tu peux dire quelque chose comme ça ? Et tu te dis mon ami ?"
+        "<b>Héros :</b> Que pensais-tu de Louise ?",
+        "<b>Professeure :</b> Cette fille était trop parfaite, je ne m’étonne pas que quelqu’un lui ai sauté dessus, elle a dû refuser et la suite tu la connais.",
+        "<b>Héros : </b> Tu n’as pas peur qu’il puisse s’agir d’un tueur en série ? Tu pourrais être la prochaine sur la liste.",
+        "<b>Professeure :</b>  Qu’il vienne, je peux me défendre.",
+        "<b>Héros :</b> Tu étais jalouse de Louise ? <br /> <b>professeue :</b> Non. Et puis quoi encore ? Comment tu peux dire quelque chose comme ça ? Et tu te dis mon ami ?"
 ]
 let repliquesbouffon = [
-        "<b>bouffon matthias : </b>Matthias, tu as vu quelque chose hier soir ?",
-        "<b>bouffon matthias : </b>MON SAC EST FAIT !!!! ",
-        "<b>bouffon matthias : </b>UNE SOURIS VERTEEEE QUI COURRRRRAIT DANS L’HERBEEEEEUH",
-        "<b>bouffon matthias : </b>COT COT COT COT COT",
-        "<b>bouffon matthias : </b>Le tueur regrette ce qu’il a fait."
+        "<b>Héros : </b>Matthias, tu as vu quelque chose hier soir ?",
+        "<b>Bouffon Matthias : </b>MON SAC EST FAIT !!!! ",
+        "<b>Bouffon Matthias : </b>UNE SOURIS VERTEEEE QUI COURRRRRAIT DANS L’HERBEEEEEUH",
+        "<b>Bouffon Matthias : </b>COT COT COT COT COT",
+        "<b>Bouffon Matthias : </b>Le tueur regrette ce qu’il a fait."
 ]
 //Initialisation du jeu
 init()
@@ -263,7 +262,7 @@ function enterHouse(index){
     let j=0;
     dialogue.innerHTML = repliquesmarchand[j]
 
-    document.addEventListener('click', (e) => {
+    dialogue.addEventListener('click', (e) => {
                 if(j < repliquesmarchand.length - 1){
                     j++
                     dialogue.innerHTML = repliquesmarchand[j]
@@ -271,10 +270,12 @@ function enterHouse(index){
 
                 }
                 else{
-                    j=0
                     replaceVillage()
+                    increaseIndice()
+                    j=0
                     endOfGame()
                 }
+                return
     })
     }
     else if (index == 1) {
@@ -284,7 +285,7 @@ function enterHouse(index){
     dialogue.style.display = "block"
     let j=0;
     dialogue.innerHTML = repliquessavant[j]
-    document.addEventListener('click', (e) => {
+    dialogue.addEventListener('click', (e) => {
                 if(j < repliquessavant.length - 1){
                     j++
                     dialogue.innerHTML = repliquessavant[j]
@@ -292,10 +293,11 @@ function enterHouse(index){
                 }
                 else{
                     replaceVillage()
+                    increaseIndice()
                     j=0
                     endOfGame()
                 }
-
+                return
     })
     }
     else if (index == 2) {
@@ -305,7 +307,7 @@ function enterHouse(index){
     dialogue.style.display = "block"
     let j=0;
     dialogue.innerHTML = repliquessorciere[j]
-    document.addEventListener('click', (e) => {
+    dialogue.addEventListener('click', (e) => {
                 if(j < repliquessorciere.length - 1){
                     j++
                     dialogue.innerHTML = repliquessorciere[j]
@@ -313,10 +315,11 @@ function enterHouse(index){
                 }
                 else{
                     replaceVillage()
+                    increaseIndice()
                     j=0
                     endOfGame()
                 }
-
+                return
     })
     }
     else if (index == 3) {
@@ -326,16 +329,18 @@ function enterHouse(index){
     dialogue.style.display = "block"
     let j=0;
     dialogue.innerHTML = repliquestavernier[j]
-    document.addEventListener('click', (e) => {
+    dialogue.addEventListener('click', (e) => {
                 if(j < repliquestavernier.length - 1){
                     j++
                     dialogue.innerHTML = repliquestavernier[j]
                 }
                 else{
                     replaceVillage()
+                    increaseIndice()
                     j=0
                     endOfGame()
                 }
+                return
     })
 }
     else if (index == 6) {
@@ -345,16 +350,18 @@ function enterHouse(index){
     dialogue.style.display = "block"
     let j=0;
     dialogue.innerHTML = repliquesmercenaire[j]
-    document.addEventListener('click', (e) => {
+    dialogue.addEventListener('click', (e) => {
                 if(j < repliquestavernier.length - 1){
                     j++
                     dialogue.innerHTML = repliquesmercenaire[j]
                 }
                 else{
                     replaceVillage()
+                    increaseIndice()
                     j=0
                     endOfGame()
                 }
+                return
     })
 }
     else if (index == 4) {
@@ -364,16 +371,18 @@ function enterHouse(index){
     dialogue.style.display = "block"
     let j=0;
     dialogue.innerHTML = repliquesancien[j]
-    document.addEventListener('click', (e) => {
+    dialogue.addEventListener('click', (e) => {
                 if(j < repliquestavernier.length - 1){
                     j++
                     dialogue.innerHTML = repliquesancien[j]
                 }
                 else{
                     replaceVillage()
+                    increaseIndice()
                     j=0
                     endOfGame()
                 }
+                return
     })
 }
     else if (index == 9) {
@@ -383,16 +392,18 @@ function enterHouse(index){
     dialogue.style.display = "block"
     let j=0;
     dialogue.innerHTML = repliqueslouise[j]
-    document.addEventListener('click', (e) => {
+    dialogue.addEventListener('click', (e) => {
                 if(j < repliquestavernier.length - 1){
                     j++
                     dialogue.innerHTML = repliqueslouise[j]
                 }
                 else{
                     replaceVillage()
+                    increaseIndice()
                     j=0
                     endOfGame()
                 }
+                return
     })
 }
     else if (index == 8) {
@@ -402,16 +413,18 @@ function enterHouse(index){
     dialogue.style.display = "block"
     let j=0;
     dialogue.innerHTML = repliquesprofesseure[j]
-    document.addEventListener('click', (e) => {
+    dialogue.addEventListener('click', (e) => {
                 if(j < repliquestavernier.length - 1){
                     j++
                     dialogue.innerHTML = repliquesprofesseure[j]
                 }
                 else{
                     replaceVillage()
+                    increaseIndice()
                     j=0
                     endOfGame()
                 }
+                return
     })
 }
     else if (index == 7) {
@@ -421,24 +434,28 @@ function enterHouse(index){
     dialogue.style.display = "block"
     let j=0;
     dialogue.innerHTML = repliquesbouffon[j]
-    document.addEventListener('click', (e) => {
+    dialogue.addEventListener('click', (e) => {
                 if(j < repliquestavernier.length - 1){
                     j++
                     dialogue.innerHTML = repliquesbouffon[j]
                 }
                 else{
                     replaceVillage()
+                    increaseIndice()
                     j=0
                     endOfGame()
                 }
+                return
     })
 }
+return;
 }
 function replaceVillage(){
     srcImgBg = "sprites/village.png"
     background.setAttribute('src', srcImgBg)
     perso.style.display = "block"
     dialogue.style.display = "none"
+    return;
 }
 
 function placePerso(){
@@ -446,12 +463,20 @@ function placePerso(){
     perso.style.left = persoX + 'px'
 }
 function endOfGame(){
-    if (indices == 5) {
+    if (indices > 15) {
         srcImgBg = "sprites/ancien.jpg"
         background.setAttribute('src', srcImgBg)
         end = document.querySelector('#end')
         end.style.display = 'block'
         perso.style.display = "none"
+        let nomurder = document.querySelectorAll('.nochoice')
+        for (let i = 0; i < nomurder.length; i++) {
+            nomurder[i].addEventListener('click', (e) =>{
+                srcImgBg = "sprites/lose.png"
+                background.setAttribute('src', srcImgBg)
+                end.style.display = "none"
+            })
+        }
         let murder = document.querySelector('.choice')
         murder.addEventListener('click', (e) => {
             e.preventDefault()
@@ -460,4 +485,10 @@ function endOfGame(){
             end.style.display = "none"
         })
 }
+return
+}
+function increaseIndice(){
+    indices++
+    console.log("indices : " + indices)
+    return
 }
