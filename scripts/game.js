@@ -71,6 +71,7 @@ let doors = [
     {ydoor:360,xdoor:360,xdoor2:370, door: 5, visited: false},
     {ydoor:490,xdoor:40,xdoor2:50, door: 6, visited: false},
 ]
+// liste des dialogues
 let repliquesancien = [
         "Ancien : *nom du joueur*, tu es le protecteur de notre village depuis des années maintenant, je compte sur toi pour élucider ce meurtre…Pauvre Louise, si jeune et si belle… nous la vengerons.",
         "Laissez moi une journée vieil homme, je trouverai qui a fait ça. (dans ses pensées : Louise… je n’aurais pas dû t’abandonner. Pardonnes moi.)",
@@ -125,6 +126,61 @@ let repliquesbouffon = [
         "COT COT COT COT COT",
         "Le tueur regrette ce qu’il a fait."
 ]
+//Liste des indices par habitant
+let indicesAncien = [
+  "L’ancien du village est un guerrier à la retraite, personne ne connaît son véritable âge mais il semble avoir eu le temps d’étudier de nombreux ouvrages et a pu amasser une grande fortune au fil de sa longue vie."
+]
+
+let indicesMarchand = [
+  "Les affaires du marchand marchent bien, il peut se permettre d’acheter des épices exotiques rares dans nos contrées. Il vend également des armes, l’arme du crime vient forcément de chez lui et cet oiseau pourrait nous en apprendre plus sur les évènement récents… Je devrais essayer de lui faire cracher ce qu'il pourrait avoir entendu."
+]
+
+let indicesHeros = [
+  "Cette cheminée me permet de tenir pendant les hivers le plus rudes.",
+  "Ma cuisine n'a rien de spécial... juste de quoi me nourrir.",
+  "Mon épée familiale est mon bien le plus précieux."
+]
+
+let indicesLouise = [
+  "Louise n’est pas morte pour rien hier soir. Elle avait des problèmes avec un autre membre du village. Meurtre passionnel ou problème d’argent ? La confrontation a dû s’envenimer à un moment ou un autre. Louise portait des lunettes, elle ne les porte plus étrangement."
+]
+
+let indicesSavant = [
+  "Le savant a l’air stressé, et ces lunettes… celles de Louise ?"
+]
+
+let indicesTaverne = [
+  "Il y a quelque chose de louche dans cette taverne, le tavernier ne dit rien mais il semblerait que la mort de Louise l’ai touché… et cette mercenaire pourrait nous en dire plus."
+]
+
+let indicesSorciere = [
+  "La sorcière joue clairement avec moi, je dois être prudent. Si je vais demander son aide trop souvent, elle me prendra quelque chose en retour..."
+]
+
+let indicesMercenaire = [
+  "La mercenaire me cache des choses mais a clairement un sens de la justice. Je vais la surveiller."
+]
+
+let indicesBouffon = [
+  "Le bouffon m'a appris quelque chose d'essentiel ! Le tueur regrette ce qu'il a fais ! Il ne me l'a pas dit tout de suite mais ça valait le coup d'insister."
+]
+
+let indicesProfesseure = [
+  "La prof semble jalouse de Louise... au point de la tuer ?",
+]
+
+let listeIndicesSorciereHasard = [
+  "La personne que tu cherches est un homme.",
+  "Le coupable a agi seul, sans réfléchir et sans complice",
+  "Prends bien en compte les conseils de la mercenaire.",
+  "Le savant fou ne te dit pas tout ce qu’il sait.",
+  "Tout le monde t’as menti au moins une fois.",
+  "La professeure était jalouse de l’affection que tu donnait à Louise.",
+  "Prend garde aux indices sans rapports avec le meurtre.",
+  "Le savant fou a un bon alibi.",
+  "Cet oiseau du marchand peut véritablement t’éclairer sur ce qu’il c’est passé.",
+  "Ne considère par le bouffon du village comme un vulgaire idiot, écoute ce qu’il peut te dire.",
+]
 //Initialisation du jeu
 init()
 function init(){
@@ -149,7 +205,7 @@ function init(){
     dialogue = document.createElement("div")
     dialogue.setAttribute('id', 'dialogue')
     dialogue.style.display = "none"
-
+    document.querySelector('.container').appendChild(dialogue)
     // Création du personnage et placement du personnage
     perso = document.createElement("img")
     let srcImgPerso = "sprites/face_sprite0.png"
@@ -263,16 +319,16 @@ function enterHouse(index){
                 if(j < repliquesmarchand.length - 1){
                     j++
                     dialogue.innerHTML = repliquesmarchand[j]
-                    console.log(j)
 
                 }
                 else{
                     (e).preventDefault()
                     j=0
                     replaceVillage()
-                    console.log(j)
+                    console.log(indicesMarchand)
+                    showIndices.innerHTML += indicesMarchand
+                    showIndices.style.display = "none"
                 }
-                console.log(j)
     })
     }
     else if (index == 1) {
@@ -291,7 +347,9 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    console.log(indicesSavant)
+                    showIndices.innerHTML += indicesSavant
+                    showIndices.style.display = "none"
                 }
 
     })
@@ -307,12 +365,13 @@ function enterHouse(index){
                 if(j < repliquessorciere.length - 1){
                     j++
                     dialogue.innerHTML = repliquessorciere[j]
-                    console.log(j)
                 }
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    console.log(indicesSorciere)
+                    showIndices.innerHTML += indicesSorciere
+                    showIndices.style.display = "none"
                 }
 
     })
@@ -332,7 +391,9 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    console.log(j)
+                    console.log(indicesTaverne)
+                    showIndices.innerHTML += indicesTaverne
+                    showIndices.style.display = "none"
                 }
     })
 }
