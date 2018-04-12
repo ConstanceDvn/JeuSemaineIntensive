@@ -65,7 +65,10 @@ let obstacles = [
 
 ]
 // Liste des portes sur la carte
-let villageois = 
+let obstacles2 = [
+    {ymin:100,ymax:100,xmin:100,xmax:100, villageois : 1},
+    {ymin:100,ymax:100,xmin:100,xmax:100,villageois : 2}
+]
 let doors = [
     {ydoor:140,xdoor:230,xdoor2:240, door: 0, visited: false},
     {ydoor:140,xdoor:480,xdoor2:490, door: 1, visited: false},
@@ -144,9 +147,6 @@ let repliquesbouffon = [
         "<b>bouffon matthias : </b>Le tueur regrette ce qu’il a fait."
 ]
 //Initialisation du jeu
-function placePerso(){
-    perso.style.top = persoY + 'px'
-    perso.style.left = persoX + 'px'
 }
 init()
 function init(){
@@ -254,12 +254,6 @@ window.addEventListener('keydown', (e) => {
     }
 })
 console.log()
-function replaceVillage(){
-    srcImgBg = "sprites/village.png"
-    background.setAttribute('src', srcImgBg)
-    perso.style.display = "block"
-    dialogue.style.display = "none"
-}
 
 function enterHouse(index){
     if (index == 0) {
@@ -442,4 +436,15 @@ function enterHouse(index){
                 }
     })
 }
+}
+function replaceVillage(){
+    srcImgBg = "sprites/village.png"
+    background.setAttribute('src', srcImgBg)
+    perso.style.display = "block"
+    dialogue.style.display = "none"
+}
+
+function placePerso(){
+    perso.style.top = persoY + 'px'
+    perso.style.left = persoX + 'px'
 }
