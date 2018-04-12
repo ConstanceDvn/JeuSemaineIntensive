@@ -68,9 +68,8 @@ let doors = [
     {ydoor:140,xdoor:930,xdoor2:940, door: 2, visited: false},
     {ydoor:420,xdoor:930,xdoor2:940, door: 3, visited: false},
     {ydoor:390,xdoor:580,xdoor2:590, door: 4, visited: false},
-    {ydoor:390,xdoor:580,xdoor2:590, door: 5, visited: false},
-    {ydoor:360,xdoor:360,xdoor2:370, door: 6, visited: false},
-    {ydoor:490,xdoor:40,xdoor2:50, door: 7, visited: false},
+    {ydoor:360,xdoor:360,xdoor2:370, door: 5, visited: false},
+    {ydoor:490,xdoor:40,xdoor2:50, door: 6, visited: false},
 ]
 let repliquesancien = [
         "Ancien : *nom du joueur*, tu es le protecteur de notre village depuis des années maintenant, je compte sur toi pour élucider ce meurtre…Pauvre Louise, si jeune et si belle… nous la vengerons.",
@@ -109,7 +108,10 @@ let repliquesmercenaire = [
 ]
 let repliquessorciere = [
         "Sorcière : Jeune * nom du joueur *, je vois que ta quête de justice est ardue… Le malheur s’est abattu. Je suis prête à t’aider en te donnant quelques indices. Mais prend garde, si tu m’en demandes pas trop, tu seras miens.",
-        "Héros : Sorcière, j’ai besoin de ton aide."
+        "Héros : Sorcière, j’ai besoin de ton aide.",
+        "La personne que tu cherches est un homme.",
+        "Prends bien en compte les conseils de la mercenaire.",
+        "Le savant fou ne te dit pas tout ce qu’il sait."
 ]
 let repliquesprofesseure = [
         "Que pensais-tu de Louise ? <br /> Cette fille était trop parfaite, je ne m’étonne pas que quelqu’un lui ai sauté dessus, elle a dû refuser et la suite tu la connais.",
@@ -201,6 +203,7 @@ window.addEventListener('keydown', (e) => {
     console.log(perso.style.left)
     console.log(perso.style.top)
 
+
     // Gestion des collisions
     for (var i = 0; i < obstacles.length; i++) {
         if ((persoY > obstacles[i].ymin && persoY < obstacles[i].ymax) && (persoX > obstacles[i].xmin && persoX < obstacles[i].xmax)){
@@ -228,6 +231,13 @@ window.addEventListener('keydown', (e) => {
         }
     }
 })
+console.log()
+function replaceVillage(){
+    srcImgBg = "sprites/village.png"
+    background.setAttribute('src', srcImgBg)
+    perso.style.display = "block"
+    dialogue.style.display = "none"
+}
 
 function enterHouse(index){
     if (index == 0) {
@@ -237,19 +247,21 @@ function enterHouse(index){
     dialogue.style.display = "block"
     let j=0;
     dialogue.innerHTML = repliquesmarchand[j]
+
     document.addEventListener('click', (e) => {
                 if(j < repliquesmarchand.length - 1){
                     j++
                     dialogue.innerHTML = repliquesmarchand[j]
                     console.log(j)
+
                 }
                 else{
-                    replaceVillage()
+                    (e).preventDefault()
                     j=0
-                    e=0
-                    event.preventDefault()
+                    replaceVillage()
+                    console.log(j)
                 }
-
+                console.log(j)
     })
     }
     else if (index == 1) {
@@ -268,8 +280,7 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    e=0
-                    event.preventDefault()
+                    console.log(j)
                 }
 
     })
@@ -285,11 +296,12 @@ function enterHouse(index){
                 if(j < repliquessorciere.length - 1){
                     j++
                     dialogue.innerHTML = repliquessorciere[j]
+                    console.log(j)
                 }
                 else{
                     replaceVillage()
                     j=0
-                    event.preventDefault()
+                    console.log(j)
                 }
 
     })
@@ -309,18 +321,12 @@ function enterHouse(index){
                 else{
                     replaceVillage()
                     j=0
-                    event.preventDefault()
+                    console.log(j)
                 }
     })
 }
 }
 
-function replaceVillage(){
-    srcImgBg = "sprites/village.png"
-    background.setAttribute('src', srcImgBg)
-    perso.style.display = "block"
-    dialogue.style.display = "none"
-}
 function placePerso(){
     perso.style.top = persoY + 'px'
     perso.style.left = persoX + 'px'
