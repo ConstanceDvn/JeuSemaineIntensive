@@ -59,6 +59,7 @@ body {
 /*Bouton jouer*/
 a {
   text-decoration: none;
+  color: #1e7fcb;
 }
 button {
   border: 1px solid #1E7FCB;

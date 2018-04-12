@@ -11,6 +11,7 @@ body{
     width:1322px;
     height:750px;
 }
+/*map*/
 #background{
     z-index: -1;
     position: absolute;
@@ -20,9 +21,20 @@ body{
     left:0px;
     box-shadow: 5px 5px 5px;
 }
+/*icone pour les indices*/
 #indices {
   width: 150px;
   margin-left: 90%;
+}
+/*Montrer les indices*/
+.showIndices {
+  background: #0a0a0a;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 80%;
 }
 #charac{
     position:absolute;

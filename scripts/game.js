@@ -1,4 +1,4 @@
-let perso, persoX, persoY, dir = 2, n = 0, background, indices
+let perso, persoX, persoY, dir = 2, n = 0, background, indices, showIndices
 // Listes des collisions sur la carte
 let obstacles = [
     {ymin:60,ymax:170,xmin:10,xmax:140},
@@ -140,11 +140,16 @@ function init(){
     indices.setAttribute('src', srcImgIndices)
     indices.setAttribute('id', 'indices')
     document.querySelector('.container').appendChild(indices)
+    // Affichage des indices
+    showIndices = document.createElement("div")
+    showIndices.setAttribute("class", "showIndices")
+    showIndices.style.display = "none"
+
     // Création de la boite de dialogue
     dialogue = document.createElement("div")
     dialogue.setAttribute('id', 'dialogue')
     dialogue.style.display = "none"
-    document.querySelector('.container').appendChild(dialogue)
+
     // Création du personnage et placement du personnage
     perso = document.createElement("img")
     let srcImgPerso = "sprites/face_sprite0.png"
@@ -337,3 +342,9 @@ function placePerso(){
     perso.style.top = persoY + 'px'
     perso.style.left = persoX + 'px'
 }
+//Affichage des indices au click
+  indices.addEventListener('click', function() {
+    showIndices.style.display = "block"
+    document.querySelector('.container').appendChild(showIndices)
+    showIndices.classList.toggle("showIndices")
+  })
