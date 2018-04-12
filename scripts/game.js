@@ -15,7 +15,7 @@ let obstacles = [
     {ymin:480,ymax:520,xmin:260,xmax:390},
     {ymin:480,ymax:520,xmin:390,xmax:520},
     {ymin:480,ymax:520,xmin:520,xmax:650},
-    {ymin:70,ymax:170,xmin:680,xmax:780},
+    {ymin:70,ymax:170,xmin:680,xmax:780}, // puit
     {ymin:290,ymax:410,xmin:820,xmax:870},
     {ymin:290,ymax:420,xmin:850,xmax:1060},
     {ymin:240,ymax:300,xmin:850,xmax:1020},
@@ -23,9 +23,9 @@ let obstacles = [
     {ymin:710,ymax:730,xmin:-10,xmax:1310},
     {ymin:-10,ymax:720,xmin:1070,xmax:1300},
     {ymin:390,ymax:720,xmin:1010,xmax:1300},
-    {ymin:150,ymax:190,xmin:1020,xmax:1060},
+    {ymin:150,ymax:190,xmin:1020,xmax:1060}, // villageois 2
     {ymin:100,ymax:170,xmin:770,xmax:780},
-    {ymin:10,ymax:50,xmin:780,xmax:830},
+    {ymin:10,ymax:50,xmin:780,xmax:830}, // villageois 1
     {ymin:-10,ymax:10,xmin:590,xmax:640},
     {ymin:130,ymax:160,xmin:500,xmax:580},
     {ymin:450,ymax:740,xmin:940,xmax:1030},
@@ -38,12 +38,12 @@ let obstacles = [
     {ymin:10,ymax:50,xmin:110,xmax:140},
     {ymin:30,ymax:50,xmin:-10,xmax:120},
     {ymin:150,ymax:200,xmin:260,xmax:320},
-    {ymin:670,ymax:710,xmin:810,xmax:850},
-    {ymin:-10,ymax:20,xmin:350,xmax:390},
+    {ymin:670,ymax:710,xmin:810,xmax:850}, // villageois 5
+    {ymin:-10,ymax:20,xmin:350,xmax:390}, // villageois 4
     {ymin:170,ymax:230,xmin:340,xmax:410},
     {ymin:140,ymax:180,xmin:340,xmax:370},
     {ymin:220,ymax:260,xmin:120,xmax:280},
-    {ymin:530,ymax:560,xmin:50,xmax:110},
+    {ymin:530,ymax:560,xmin:50,xmax:110}, // chien
     {ymin:520,ymax:560,xmin:20,xmax:60}, // le fou
     {ymin:640,ymax:710,xmin:-10,xmax:30},
     {ymin:290,ymax:380,xmin:200,xmax:290},
@@ -61,9 +61,11 @@ let obstacles = [
     {ymin:100,ymax:170,xmin:760,xmax:830},
     {ymin:690,ymax:720,xmin:110,xmax:170},
     {ymin:610,ymax:720,xmin:10,xmax:40},
+    {ymin:200,ymax:240,xmin:410,xmax:460}, // villageois 3
 
 ]
 // Liste des portes sur la carte
+let villageois = 
 let doors = [
     {ydoor:140,xdoor:230,xdoor2:240, door: 0, visited: false},
     {ydoor:140,xdoor:480,xdoor2:490, door: 1, visited: false},
@@ -77,11 +79,11 @@ let doors = [
     {ydoor:360,xdoor:340,xdoor2:370, door: 9, visited: false}
 ]
 let repliquesancien = [
-        "<b>Ancien :</b> héros, tu es le protecteur de notre village depuis des années maintenant, je compte sur toi pour élucider ce meurtre…Pauvre Louise, si jeune et si belle… nous la vengerons.",
-        "<b>héros:</b> Laissez moi une journée vieil homme, je trouverai qui a fait ça. (dans ses pensées : Louise… je n’aurais pas dû t’abandonner. Pardonnes moi.)",
-        "<b>Ancien:</b> Faite vite héros! l'intégrité du village est en périle!",
+        "<b>Ancien : </b>héros, tu es le protecteur de notre village depuis des années maintenant, je compte sur toi pour élucider ce meurtre…Pauvre Louise, si jeune et si belle… nous la vengerons.",
+        "<b>héros : </b>Laissez moi une journée vieil homme, je trouverai qui a fait ça. (dans ses pensées : Louise… je n’aurais pas dû t’abandonner. Pardonnes moi.)",
+        "<b>Ancien : </b>Faite vite héros! l'intégrité du village est en périle!",
         "*L’ancien s’en va.*",
-        "<b>Héros, à lui-même :</b> “Il est grand temps d’interroger nos chers villageois. Le tueur se trouve parmi nous.”",
+        "<b>Héros, à lui-même : </b>“Il est grand temps d’interroger nos chers villageois. Le tueur se trouve parmi nous.”",
 ]
 
 let repliqueslouise = [
@@ -93,11 +95,11 @@ let repliqueslouise = [
 ]
 
 let repliquesmarchand = [
-        "<b>Marchand :</b> héros, j’ai entendu ce qui est arrivé à Louise… Pauvre fille, qu’elle repose en paix.",
+        "<b>Marchand : </b>héros, j’ai entendu ce qui est arrivé à Louise… Pauvre fille, qu’elle repose en paix.",
         "<b>Hibou :</b> Pauvre fille, qu’elle repose en paix.",
         "<b>héros :</b> Tu es ouvert toute la nuit, tu as entendu quelque chose ? N’importe quoi ? <br /> <b>Youssef le marchand :</b> Malheureusement je n’ai pas pu voir ce qui est arrivé à Louise, je faisais une sieste à ce moment et j’ai été réveillé par ses cris d’agonie. Néanmoins, j’ai pu apercevoir une silhouette dans la pénombre sortir de chez elle en vitesse. Je n’ai pas pu distinguer de qui il s’agissait, désolé.",
-        "<b>héros:</b>Je vois que tu vends des armes, donne moi la liste des tes derniers acheteurs d’armes. Spécialement ceux qui t’ont acheté des couteaux. <br /> <b>Youssef le marchand:</b>Je ne peux rien te révéler, pardonnes-moi héros mais j’ai une réputation à tenir, une réputation qui tient sur ma capacité à garder le secret professionnel inviolé.",
-        "<b>héros:</b>Je n’ai jamais vu cet oiseau, il vient d’où et… c’est moi où il répète tout ce qu’il entend ? <br /> <b>Youssef le marchand :</b> Ahah, j’ai amené cet oiseau de mon dernier voyage au pays des épices. J’ai décidé de l’installer en boutique pour qu’il me tienne compagnie. En effet, il répète tout ce qu’il entend, c’est un oiseau magique."
+        "<b>héros :</b> Je vois que tu vends des armes, donne moi la liste des tes derniers acheteurs d’armes. Spécialement ceux qui t’ont acheté des couteaux. <br /> <b>Youssef le marchand :</b> Je ne peux rien te révéler, pardonnes-moi héros mais j’ai une réputation à tenir, une réputation qui tient sur ma capacité à garder le secret professionnel inviolé.",
+        "<b>héros : </b>Je n’ai jamais vu cet oiseau, il vient d’où et… c’est moi où il répète tout ce qu’il entend ? <br /> <b>Youssef le marchand : </b> Ahah, j’ai amené cet oiseau de mon dernier voyage au pays des épices. J’ai décidé de l’installer en boutique pour qu’il me tienne compagnie. En effet, il répète tout ce qu’il entend, c’est un oiseau magique."
 ]
 let repliquessavant = [
         "<b>Savant fou :</b> Comment oses-tu déranger un génie tel que moi en plein dans son oeuvre petit ver de terre ? Que veux tu ? Dépêche-toi.",
@@ -107,39 +109,39 @@ let repliquessavant = [
         "<b>Héros :</b> Les lunettes cassées, elles sont à vous ? <br /><b> Savant fou :</b> Oui. Arrêtez de regarder dans mon laboratoire et partez au plus vite."
 ]
 let repliquestavernier = [
-        "<b>héros:</b>Les verres sont sales, vous ne travaillez plus ? <br /> <b>tavernier:</b>J’ai… oublié de les nettoyer hier soir. Vous savez, cette histoire de mort ça nous a tous chamboulés.",
-        "<b>héros:</b>C’est quoi cette bouteille vide ? Il me semblait bien vous avoir entendu dire que vous ne buviez jamais malgré votre métier.<br /> <b>tavernier:</b>Comme je l’ai dis j’ai oublié de nettoyer hier soir. Sûrement une bouteille finie par un client. ",
-        "<b>héros:</b>Que pensez-vous du meurtre de Louise ?<br /> <b>tavernier:</b> C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
-        "<b>héros:</b>Où étiez-vous hier soir ? <br /> Dans ma chambre, j’ai eu une sale soirée…",
-        "<b>tavernier:</b>Où est la mercenaire dont vous m’aviez parlé ? <br /> Elle est devant la taverne."
+        "<b>héros : </b>Les verres sont sales, vous ne travaillez plus ? <br /> <b>tavernier : </b>J’ai… oublié de les nettoyer hier soir. Vous savez, cette histoire de mort ça nous a tous chamboulés.",
+        "<b>héros : </b>C’est quoi cette bouteille vide ? Il me semblait bien vous avoir entendu dire que vous ne buviez jamais malgré votre métier.<br /> <b>tavernier:</b>Comme je l’ai dis j’ai oublié de nettoyer hier soir. Sûrement une bouteille finie par un client. ",
+        "<b>héros : </b>Que pensez-vous du meurtre de Louise ?<br /> <b>tavernier : </b> C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
+        "<b>héros : </b>Où étiez-vous hier soir ? <br /> Dans ma chambre, j’ai eu une sale soirée…",
+        "<b>tavernier : </b>Où est la mercenaire dont vous m’aviez parlé ?<b> tavernier : </b><br /> Elle est devant la taverne."
 ]
 let repliquesmercenaire = [
-        "<b>héros:</b>Qu’est ce qu’une mercenaire de votre trempe viens faire dans notre petit village  <br /> <b>mercenaire:</b>Je me balade de ville en ville pour trouver un adversaire à ma taille, une sorte de voyage initiatique tu vois ce que je veux dire ? Bien sûr que tu vois ! T’es un guerrier, tout comme moi !",
-        "J’imagine que vous avez entendu parler du meurtre, qu’en pensez-vous ?<br /> Ahah, maintenant que tu poses la question, j’ai été voir la scène du crime. Ce genre d’histoires m’intéresse trop. J’en déduis, personnellement, qu’on a affaire à un crime passionnel, j’ai vu beaucoup de violence et je sais de quoi je parle. La personne qui a massacré cette pauvre fille avait de fort sentiments pour elle. ",
-        "Que pensez-vous du meurtre de Louise ?<br />  C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
-        "Qui est le coupable selon vous ?",
-        "je ne vais pas vous le dire même si j’ai ma petite idée. Vous imaginez bien que ça retire tout le fun pour moi. Mais voici un indice : je l’ai toujours à l’oeil car si vous ne le faites pas payer, c’est moi qui m’occuperais de lui...Ou elle !"
+        "<b>héros : </b>Qu’est ce qu’une mercenaire de votre trempe viens faire dans notre petit village  <br /> <b>mercenaire : </b>Je me balade de ville en ville pour trouver un adversaire à ma taille, une sorte de voyage initiatique tu vois ce que je veux dire ? Bien sûr que tu vois ! T’es un guerrier, tout comme moi !",
+        "<b>héros : </b>J’imagine que vous avez entendu parler du meurtre, qu’en pensez-vous ?<br /> <b>mercenaire : </b>Ahah, maintenant que tu poses la question, j’ai été voir la scène du crime. Ce genre d’histoires m’intéresse trop. J’en déduis, personnellement, qu’on a affaire à un crime passionnel, j’ai vu beaucoup de violence et je sais de quoi je parle. La personne qui a massacré cette pauvre fille avait de fort sentiments pour elle. ",
+        "<b>héros : </b>Que pensez-vous du meurtre de Louise ?<br /> <b>mercenaire :</b> C’est regrettable, mais j’imagine que ça devait arriver. Cette fille ne s’ouvrait à personne… À part à vous. Je vous enviais tellement… bref. Je ne veux plus en parler, c’est de l’histoire ancienne.",
+        "<b>héros : </b>Qui est le coupable selon vous ?",
+        "<b>mercenaire : </b>je ne vais pas vous le dire même si j’ai ma petite idée. Vous imaginez bien que ça retire tout le fun pour moi. Mais voici un indice : je l’ai toujours à l’oeil car si vous ne le faites pas payer, c’est moi qui m’occuperais de lui...Ou elle !"
 ]
 let repliquessorciere = [
-        "Sorcière : Jeune * nom du joueur *, je vois que ta quête de justice est ardue… Le malheur s’est abattu. Je suis prête à t’aider en te donnant quelques indices. Mais prend garde, si tu m’en demandes pas trop, tu seras miens.",
-        "Héros : Sorcière, j’ai besoin de ton aide.",
-        "La personne que tu cherches est un homme.",
-        "Prends bien en compte les conseils de la mercenaire.",
-        "Le savant fou ne te dit pas tout ce qu’il sait."
+        "<b>Sorcière : </b> Jeune * nom du joueur *, je vois que ta quête de justice est ardue… Le malheur s’est abattu. Je suis prête à t’aider en te donnant quelques indices. Mais prend garde, si tu m’en demandes pas trop, tu seras miens.",
+        "<b>Héros :</b> Sorcière, j’ai besoin de ton aide.",
+        "<b>Sorcière : </b>La personne que tu cherches est un homme.",
+        "<b>Sorcière : </b>Prends bien en compte les conseils de la mercenaire.",
+        "<b>Sorcière : </b>Le savant fou ne te dit pas tout ce qu’il sait."
 ]
 let repliquesprofesseure = [
-        "héros: Que pensais-tu de Louise ?",
-        "professeure: Cette fille était trop parfaite, je ne m’étonne pas que quelqu’un lui ai sauté dessus, elle a dû refuser et la suite tu la connais.",
-        "héros: Tu n’as pas peur qu’il puisse s’agir d’un tueur en série ? Tu pourrais être la prochaine sur la liste.",
-        "professeure:  Qu’il vienne, je peux me défendre.",
-        "héros: Tu étais jalouse de Louise ? <br /> professeure: Non. Et puis quoi encore ? Comment tu peux dire quelque chose comme ça ? Et tu te dis mon ami ?"
+        "<b>héros :</b> Que pensais-tu de Louise ?",
+        "<b>professeure :</b> Cette fille était trop parfaite, je ne m’étonne pas que quelqu’un lui ai sauté dessus, elle a dû refuser et la suite tu la connais.",
+        "<b>héros : </b> Tu n’as pas peur qu’il puisse s’agir d’un tueur en série ? Tu pourrais être la prochaine sur la liste.",
+        "<b>professeure :</b>  Qu’il vienne, je peux me défendre.",
+        "<b>héros :</b> Tu étais jalouse de Louise ? <br /> <b>professeue :</b> Non. Et puis quoi encore ? Comment tu peux dire quelque chose comme ça ? Et tu te dis mon ami ?"
 ]
 let repliquesbouffon = [
-        "Matthias, tu as vu quelque chose hier soir ?",
-        "MON SAC EST FAIT !!!! ",
-        "UNE SOURIS VERTEEEE QUI COURRRRRAIT DANS L’HERBEEEEEUH",
-        "COT COT COT COT COT",
-        "Le tueur regrette ce qu’il a fait."
+        "<b>bouffon matthias : </b>Matthias, tu as vu quelque chose hier soir ?",
+        "<b>bouffon matthias : </b>MON SAC EST FAIT !!!! ",
+        "<b>bouffon matthias : </b>UNE SOURIS VERTEEEE QUI COURRRRRAIT DANS L’HERBEEEEEUH",
+        "<b>bouffon matthias : </b>COT COT COT COT COT",
+        "<b>bouffon matthias : </b>Le tueur regrette ce qu’il a fait."
 ]
 //Initialisation du jeu
 function placePerso(){
